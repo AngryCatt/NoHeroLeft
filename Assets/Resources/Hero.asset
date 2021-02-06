@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ed2cb51423341d42b9948d32e4ecbd3, type: 3}
+  m_Name: Hero
+  m_EditorClassIdentifier: 
+  UnitName: "\u0411\u0435\u0431\u0440\u0430"
+  IsHero: 1
+  Avatar:
+    img: {fileID: 21300000, guid: fe414ae7d70a54244a2c862fbcc8ef55, type: 3}
+    pos: {x: 0, y: 0}
+    size: {x: 1, y: 1}
+  MirrorImage: 0
+  unitProperty:
+    Hp:
+      value: 600
+    HpRegen:
+      value: 0
+    Damage:
+      value: 5
+    DamageResist:
+      value: 0
+    Armor: 0
+    Evasion:
+      value: 0
+  Spells:
+  - {fileID: 11400000, guid: 1c8e91a94b0f96b45b0989d1eea8fed3, type: 2}
+  - {fileID: 11400000, guid: ad6dcfac7820d1a41b6295900fdc9f0c, type: 2}
+  - {fileID: 11400000, guid: fe5f2f3cbed9aad429b86fdc725ff9d7, type: 2}
+  - {fileID: 11400000, guid: 0b5f337f9b6f28849a5dbae0f8979eff, type: 2}
+  ActionsPerTurn: 1
+  FirstLinePriority: 0
+  IsRangeUnit: 0
+  attackType: {fileID: 11400000, guid: ae3bbfd2ecca51240ad38b2affae6382, type: 2}
+  ico:
+    img: {fileID: 21300000, guid: 873c1b3350bcd9f4a98cd5eba18c2779, type: 3}
+    pos: {x: 0, y: 0}
+    size: {x: 0, y: 0}
+  unitActions:
+    target: 0
+    BattleCry:
+      m_PersistentCalls:
+        m_Calls: []
+    OnGetDamage:
+      m_PersistentCalls:
+        m_Calls: []
+    OnAttack:
+      m_PersistentCalls:
+        m_Calls: []
+    AfterDead:
+      m_PersistentCalls:
+        m_Calls: []

@@ -1,0 +1,83 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ec7376fefde62b47bfe2736c5f8c8d2, type: 3}
+  m_Name: Frost Shield
+  m_EditorClassIdentifier: 
+  SpellName: Frosy Shield
+  HeroSpell: 0
+  ImpactValue:
+    value: 0
+    isProcent: 0
+  uImage:
+    img: {fileID: 21300000, guid: fa61f76608a9f884497c1388db5e964f, type: 3}
+    pos: {x: 0, y: 0}
+    size: {x: 0, y: 0}
+  passiveSettings:
+    IsPassiveSkill: 0
+    HaveChanse: 0
+    chanse: 0
+  ManaCost: 5
+  EnergyCost: 5
+  ReloadTurns: 5
+  InstantAction: 1
+  Perk: -1
+  spellClass: 1
+  spellTarget: 1
+  spellType: Hp
+  effects:
+  - Name: Frost Shield Effect
+    Function: 
+    VisualEffect: {fileID: 0}
+    Duration: 3
+    ImpactValue:
+      value: 0
+      isProcent: 0
+    MaxImpact: 0
+    ActionCall: 1
+    effectStacking: 0
+    stacks: 1
+    spellType: 
+    spellTarget: 0
+    splashType: 0
+    spell: {fileID: 0}
+  splashType: 0
+  Targets: 1
+  DamageDecrase: 100
+  DummyUnit: {fileID: 0}
+  CallEveryTurn: 0
+  unitEvents:
+    target: 0
+    BattleCry:
+      m_PersistentCalls:
+        m_Calls: []
+    OnGetDamage:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 11400000, guid: 7f0cdb895f968a04380ff282abc5bb35, type: 2}
+          m_MethodName: SpellExecute
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: LastOffender
+            m_BoolArgument: 0
+          m_CallState: 2
+    OnAttack:
+      m_PersistentCalls:
+        m_Calls: []
+    AfterDead:
+      m_PersistentCalls:
+        m_Calls: []
+  effectImage: {fileID: 0}
+  linkedUnits: []

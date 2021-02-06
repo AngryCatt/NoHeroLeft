@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<Units>
+  <Language lng="Russian">
+    <unit name="Goblin">
+      <name>Гоблин</name>
+      <description>Эти гоблины хоть и маленькие, но оочень злые!</description>
+    </unit>
+    <unit name="Garphy">
+      <name>Гарпия</name>
+      <description>Бьют больно, но сами помирают от пары ударов.</description>
+    </unit>
+  </Language>
+</Units>

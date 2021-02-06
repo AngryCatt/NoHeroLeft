@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ec7376fefde62b47bfe2736c5f8c8d2, type: 3}
+  m_Name: IceClassLowPerk
+  m_EditorClassIdentifier: 
+  SpellName: Ice
+  HeroSpell: 0
+  ImpactValue:
+    value: 49
+    isProcent: 1
+  uImage:
+    img: {fileID: 21300000, guid: a2f13c216f2649d49b892cade7f4e5f0, type: 3}
+    pos: {x: 0, y: 0}
+    size: {x: 0, y: 0}
+  passiveSettings:
+    IsPassiveSkill: 0
+    HaveChanse: 0
+    chanse: 0
+  ManaCost: 0
+  EnergyCost: 0
+  ReloadTurns: 0
+  InstantAction: 1
+  Perk: 0
+  spellClass: 0
+  spellTarget: 0
+  spellType: UnitAction
+  effects: []
+  splashType: 0
+  Targets: 1
+  DamageDecrase: 100
+  DummyUnit: {fileID: 0}
+  CallEveryTurn: 0
+  unitEvents:
+    target: 0
+    BattleCry:
+      m_PersistentCalls:
+        m_Calls: []
+    OnGetDamage:
+      m_PersistentCalls:
+        m_Calls: []
+    OnAttack:
+      m_PersistentCalls:
+        m_Calls: []
+    AfterDead:
+      m_PersistentCalls:
+        m_Calls: []
+  effectImage: {fileID: 0}
+  linkedUnits: []

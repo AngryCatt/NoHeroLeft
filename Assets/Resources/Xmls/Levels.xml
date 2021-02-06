@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<Levels>
+  <Language lng="Russian">
+    <recomended>Рекоммендуемый уровень: </recomended>
+    <level name="Goblin Cave">
+      <name>Пещера Гоблинов</name>
+      <description>В этой пещере обитают очень голодные и злые гоблины.</description>
+      <rec>0</rec>
+    </level>
+    <level name="Garphy Tower">
+      <name>Башня Гарпий</name>
+      <description>Эта заброшенная башня кишит гарпиями.</description>
+      <rec>3</rec>
+    </level>
+  </Language>
+</Levels>
