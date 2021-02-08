@@ -28,6 +28,8 @@ MonoBehaviour:
       value: 5
     DamageResist:
       value: 0
+    MagicResist:
+      value: 20
     Armor: 0
     Evasion:
       value: 0

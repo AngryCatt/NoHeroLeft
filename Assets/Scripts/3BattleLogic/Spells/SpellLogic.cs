@@ -203,7 +203,7 @@ namespace HeroLeft.BattleLogic {
             }
             if (realizer is HeroLogic) {
                 if(unit != null)
-                if (spellImage.spellTarget == Spell.SpellTarget.Enemy && unit.Alien || spellImage.spellTarget == Spell.SpellTarget.Alies && !unit.Alien) return;
+                if (spellImage.spellTarget.HasFlag(Spell.SpellTarget.Enemy) && unit.Alien || spellImage.spellTarget.HasFlag(Spell.SpellTarget.Alies) && !unit.Alien) return;
                 HeroLogic heroLogic = (HeroLogic)realizer;
                 heroLogic.Energy -= spellImage.EnergyCost;
                 heroLogic.Mana -= spellImage.ManaCost;

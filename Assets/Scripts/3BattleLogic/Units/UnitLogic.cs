@@ -73,7 +73,7 @@ namespace HeroLeft.BattleLogic
             return this;
         }
 
-        public void NextTurnRepose(uint start)
+        public void NextTurnRepose(Effect.actionCall start)
         {
             if (this == null) return;
 
@@ -94,7 +94,7 @@ namespace HeroLeft.BattleLogic
                 }
         }
 
-        public void EffectsTick(uint start)
+        public void EffectsTick(Effect.actionCall start)
         {
             logic.EffectsTick(start);
         }

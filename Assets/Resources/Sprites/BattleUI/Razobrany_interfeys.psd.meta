@@ -1,0 +1,737 @@
+fileFormatVersion: 2
+guid: 45ace4fb2ecc6f4458a1b734970e8599
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1336805214726697024
+    second: Razobrany_interfeys_0
+  - first:
+      213: 1726204508564075633
+    second: Razobrany_interfeys_1
+  - first:
+      213: 5661729888380482707
+    second: Razobrany_interfeys_2
+  - first:
+      213: 1264068204932544598
+    second: Razobrany_interfeys_3
+  - first:
+      213: -5830509149210818329
+    second: Razobrany_interfeys_4
+  - first:
+      213: -2625265101305426399
+    second: Razobrany_interfeys_5
+  - first:
+      213: -4729488409692110071
+    second: Razobrany_interfeys_6
+  - first:
+      213: -7669379284149672741
+    second: Razobrany_interfeys_7
+  - first:
+      213: 3847752657480212363
+    second: Razobrany_interfeys_8
+  - first:
+      213: -3228999631227373167
+    second: Razobrany_interfeys_9
+  - first:
+      213: -3249443041082474061
+    second: Razobrany_interfeys_10
+  - first:
+      213: 8776869598924748031
+    second: Razobrany_interfeys_11
+  - first:
+      213: -5870607919759852316
+    second: Razobrany_interfeys_12
+  - first:
+      213: 7211569404288155861
+    second: Razobrany_interfeys_13
+  - first:
+      213: 1592042543631185815
+    second: Razobrany_interfeys_14
+  - first:
+      213: 6734239677469589502
+    second: Razobrany_interfeys_15
+  - first:
+      213: -6036178586776308891
+    second: Razobrany_interfeys_16
+  - first:
+      213: -6090482916974116767
+    second: Razobrany_interfeys_17
+  - first:
+      213: -6785448777713616430
+    second: Razobrany_interfeys_18
+  - first:
+      213: -9022091300056969760
+    second: Razobrany_interfeys_19
+  - first:
+      213: 6980997870439332649
+    second: Razobrany_interfeys_20
+  - first:
+      213: -6839188546341448375
+    second: Razobrany_interfeys_21
+  - first:
+      213: -1847804900365871864
+    second: Razobrany_interfeys_22
+  - first:
+      213: -5412120728675927575
+    second: Razobrany_interfeys_23
+  - first:
+      213: -7884009296120660084
+    second: Razobrany_interfeys_24
+  - first:
+      213: -6092120307196097733
+    second: Razobrany_interfeys_25
+  - first:
+      213: -2235172879364072510
+    second: Razobrany_interfeys_26
+  - first:
+      213: 1183247201390121961
+    second: Razobrany_interfeys_27
+  - first:
+      213: -5501446278180057863
+    second: Razobrany_interfeys_28
+  - first:
+      213: -191576230063239775
+    second: Razobrany_interfeys_29
+  - first:
+      213: 4191028248385023611
+    second: Razobrany_interfeys_30
+  - first:
+      213: -7404202879771230528
+    second: Razobrany_interfeys_31
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 1
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 4096
+    resizeAlgorithm: 1
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 4096
+    resizeAlgorithm: 1
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Razobrany_interfeys_0
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 1722
+        width: 302
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 040bca592494d8210800000000000000
+      internalID: 1336805214726697024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razobrany_interfeys_1
+      rect:
+        serializedVersion: 2
+        x: 521
+        y: 1715
+        width: 877
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 174b3aecad5b4f710800000000000000
+      internalID: 1726204508564075633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razobrany_interfeys_2
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 1645
+        width: 35
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 394712b1651829e40800000000000000
+      internalID: 5661729888380482707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razobrany_interfeys_4
+      rect:
+        serializedVersion: 2
+        x: 1745
+        y: 1181
+        width: 947
+        height: 499
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e8cf95f1ded51fa0800000000000000
+      internalID: -5830509149210818329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razobrany_interfeys_5
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 1589
+        width: 35
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12ec573bc4f219bd0800000000000000
+      internalID: -2625265101305426399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razobrany_interfeys_6
+      rect:
+        serializedVersion: 2
+        x: 453
+        y: 1146
+        width: 1021
+        height: 534
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90389fa695b7d5eb0800000000000000
+      internalID: -4729488409692110071
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razobrany_interfeys_7
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 1513
+        width: 309
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd4e488dc24e09590800000000000000
+      internalID: -7669379284149672741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razobrany_interfeys_8
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 1436
+        width: 309
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8f5cacd7a6f56530800000000000000
+      internalID: 3847752657480212363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razobrany_interfeys_9
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 1351
+        width: 309
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19933d081f94033d0800000000000000
+      internalID: -3228999631227373167
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razobrany_interfeys_10
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 1266
+        width: 309
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b10a6a35c8a7e2d0800000000000000
+      internalID: -3249443041082474061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razobrany_interfeys_11
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 1181
+        width: 309
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff4b5dbf564bdc970800000000000000
+      internalID: 8776869598924748031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razobrany_interfeys_12
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 1096
+        width: 309
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ec7e176339678ea0800000000000000
+      internalID: -5870607919759852316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razobrany_interfeys_14
+      rect:
+        serializedVersion: 2
+        x: 658
+        y: 1090
+        width: 575
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79732782242181610800000000000000
+      internalID: 1592042543631185815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razobrany_interfeys_15
+      rect:
+        serializedVersion: 2
+        x: 1656
+        y: 1076
+        width: 1127
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eff7aef9e43d47d50800000000000000
+      internalID: 6734239677469589502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razobrany_interfeys_16
+      rect:
+        serializedVersion: 2
+        x: 658
+        y: 1015
+        width: 575
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 563f06e6e8f2b3ca0800000000000000
+      internalID: -6036178586776308891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razobrany_interfeys_17
+      rect:
+        serializedVersion: 2
+        x: 1657
+        y: 997
+        width: 1126
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1604c274e024a7ba0800000000000000
+      internalID: -6090482916974116767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razobrany_interfeys_18
+      rect:
+        serializedVersion: 2
+        x: 299
+        y: 898
+        width: 1324
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d975ca994e35d1a0800000000000000
+      internalID: -6785448777713616430
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razobrany_interfeys_23
+      rect:
+        serializedVersion: 2
+        x: 1655
+        y: 918
+        width: 1126
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e93eb53fd844e4b0800000000000000
+      internalID: -5412120728675927575
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razobrany_interfeys_25
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 84
+        width: 389
+        height: 643
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3b02a8abd0747ba0800000000000000
+      internalID: -6092120307196097733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razobrany_interfeys_26
+      rect:
+        serializedVersion: 2
+        x: 617
+        y: 172
+        width: 233
+        height: 473
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2cbdae1db121bf0e0800000000000000
+      internalID: -2235172879364072510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razobrany_interfeys_27
+      rect:
+        serializedVersion: 2
+        x: 893
+        y: 172
+        width: 233
+        height: 473
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e355508f0dbb6010800000000000000
+      internalID: 1183247201390121961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razobrany_interfeys_28
+      rect:
+        serializedVersion: 2
+        x: 1190
+        y: 213
+        width: 134
+        height: 383
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9fcce2602cfe6a3b0800000000000000
+      internalID: -5501446278180057863
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razobrany_interfeys_29
+      rect:
+        serializedVersion: 2
+        x: 1413
+        y: 172
+        width: 233
+        height: 473
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ad0cab0f62675df0800000000000000
+      internalID: -191576230063239775
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razobrany_interfeys_30
+      rect:
+        serializedVersion: 2
+        x: 1709
+        y: 172
+        width: 234
+        height: 473
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7eed94acf5892a30800000000000000
+      internalID: 4191028248385023611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razobrany_interfeys_31
+      rect:
+        serializedVersion: 2
+        x: 2013
+        y: 207
+        width: 117
+        height: 393
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0cebf42c5bcfe3990800000000000000
+      internalID: -7404202879771230528
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -6,6 +6,7 @@ public class PanelSwitch : MonoBehaviour
 {
     public int activePanel = -1;
     public int DefultPanel = -1;
+    public bool DisableOnClick = false;
     public GameObject[] panels;
     
 
@@ -19,6 +20,11 @@ public class PanelSwitch : MonoBehaviour
     }
 
     public void Show(int panel) {
+        if(DisableOnClick && activePanel == panel)
+        {
+            return;
+        }
+
         if (activePanel != -1) {
             panels[activePanel].SetActive(false);
             if (activePanel == panel) {

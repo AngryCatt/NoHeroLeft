@@ -183,24 +183,24 @@ namespace HeroLeft.BattleLogic {
             {
                 Transform enm = BattleControll.battleControll.EnemyUnitsParent.transform;
                 int lenght = 0;
-                if (spellTarget != SpellTarget.Alies)
-                {
-                    lenght += enm.childCount;
-                }
-                if (spellTarget != SpellTarget.Enemy)
+                if (spellTarget.HasFlag(SpellTarget.Alies))
                 {
                     lenght++;
                 }
+                if (spellTarget.HasFlag(SpellTarget.Enemy))
+                {
+                    lenght += enm.childCount;
+                }
                 targs = new Unit[lenght];
 
-                if (spellTarget != SpellTarget.Alies)
+                if (spellTarget.HasFlag(SpellTarget.Enemy))
                 {
-                    for (int i = 0; i < targs.Length; i++)
+                    for (int i = 0; i < enm.childCount; i++)
                     {
                         targs[i] = enm.GetChild(i).GetComponent<UnitLogic>();
                     }
                 }
-                if (spellTarget != SpellTarget.Enemy)
+                if (spellTarget.HasFlag(SpellTarget.Alies))
                 {
                     targs[targs.Length - 1] = BattleControll.heroLogic;
                 }
@@ -221,6 +221,7 @@ namespace HeroLeft.BattleLogic {
                         Logic lg = BattleControll.battleControll.EnemyQueue.GetChild(r).GetComponent<UnitLogic>().unitlogic;
                         if (!lg.UnderSpell(this))
                         {
+
                             List<Effect> effects = new List<Effect>();
                             for (int w = 0; w < this.effects.Length; w++)
                             {

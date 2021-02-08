@@ -31,7 +31,7 @@ MonoBehaviour:
   InstantAction: 1
   Perk: 0
   spellClass: 0
-  spellTarget: 0
+  spellTarget: 2
   spellType: Hp
   effects:
   - Name: Holy Land Burn
@@ -42,11 +42,11 @@ MonoBehaviour:
       value: 5
       isProcent: 0
     MaxImpact: 0
-    ActionCall: 0
+    ActionCall: 2
     effectStacking: 1
     stacks: 1
     spellType: Hp
-    spellTarget: 0
+    spellTarget: 2
     splashType: 0
     spell: {fileID: 11400000}
   splashType: 100

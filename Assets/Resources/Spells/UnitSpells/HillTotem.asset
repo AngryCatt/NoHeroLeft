@@ -15,7 +15,7 @@ MonoBehaviour:
   SpellName: MassTotemHill
   HeroSpell: 0
   ImpactValue:
-    value: 0
+    value: -1
     isProcent: 0
   uImage:
     img: {fileID: 0}
@@ -31,7 +31,7 @@ MonoBehaviour:
   InstantAction: 0
   Perk: 0
   spellClass: 0
-  spellTarget: -1
+  spellTarget: 2
   spellType: Hp
   effects: []
   splashType: 100

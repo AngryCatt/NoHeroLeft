@@ -140,6 +140,7 @@ namespace HeroLeft.BattleLogic
             EnemyAvatar.GetComponent<RectTransform>().pivot = (unit.unitObject.ico.pos == Vector2.zero) ? Vector2.one / 2 : unit.unitObject.ico.pos;
             nameTag.text = unit.UnitName;
             ShowUnitEffects(unit);
+
         }
 
         public void UnitInfoHide()

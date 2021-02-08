@@ -88,4 +88,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Duration: 0
+  CallTime: 2
   spell: {fileID: 11400000, guid: f12e5016814b20042ad9eddc60b79185, type: 2}

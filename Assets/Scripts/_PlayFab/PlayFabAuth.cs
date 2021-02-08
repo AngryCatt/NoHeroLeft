@@ -108,7 +108,7 @@ namespace HeroLeft.Auth {
                 errorText.SendError("Данной почты не существует!");
                 return false;
             }
-            if (NameField.text.Length < 3) {
+            if (NameField.IsActive() && NameField.text.Length < 3) {
                 errorText.SendError("Имя пользователя не может быть короче 3-х символов!");
                 return false;
             }
@@ -116,7 +116,7 @@ namespace HeroLeft.Auth {
                 errorText.SendError("Пароль должен содержать более 6-ти символов!");
                 return false;
             }
-            if (PassField.text != ConfirmPassField.text) {
+            if (ConfirmPassField.IsActive() && PassField.text != ConfirmPassField.text) {
                 errorText.SendError("Пароли не совпадают!");
                 return false;
             }

@@ -22,6 +22,8 @@ namespace HeroLeft
         public static readonly string HeroImages = "Sprites/Heroes/";
 
         public const string MissIndicator = "Prefabs/MissIndicator";
+        public const string HealIndicator = "Prefabs/HealIndicator";
+
         public const float AttackReactionDistance = 200f;
 
         public static string UserName;

@@ -29,9 +29,14 @@ namespace HeroLeft.BattleLogic {
             for (int i = 0; i < enemies.childCount; i++)
             {
                 UnitLogic enamy = enemies.GetChild(i).GetComponent<UnitLogic>();
-                enamy.NextTurnRepose(1);
+                enamy.NextTurnRepose(Effect.actionCall.OnStartTurn);
                 if (NeedRefreshPos)
                     PositionReload(enamy);
+
+                if(enamy.unitlogic.totem != null)
+                {
+                    enamy.unitlogic.totem.Execute(Effect.actionCall.OnStartTurn);
+                }
             }
 
             BattleControll.heroLogic.LinkedSpells();
@@ -56,7 +61,7 @@ namespace HeroLeft.BattleLogic {
 
                                     break;
                                 default:
-                                    sp.spell.Execute(null, null,true,-2);
+                                    sp.spell.Execute(null, null,true);
                                     break;
                             }
                         }
@@ -110,7 +115,11 @@ namespace HeroLeft.BattleLogic {
             for (int i = 0; i < enemies.childCount; i++)
             {
                 UnitLogic enamy = enemies.GetChild(i).GetComponent<UnitLogic>();
-                enamy.EffectsTick(1);
+                enamy.EffectsTick(Effect.actionCall.OnEndTurn);
+                if (enamy.unitlogic.totem != null)
+                {
+                    enamy.unitlogic.totem.Execute(Effect.actionCall.OnEndTurn);
+                }
             }
             NeedRefreshPos = false;
             BattleLogic.battleLogic.addAction(() =>

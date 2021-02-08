@@ -51,7 +51,7 @@ namespace HeroLeft.BattleLogic {
             ReloadAllSpells();
             EffectsTick();
             BattleLogic.battleLogic.addMyNextQueue(NextTurnRepose, null);
-            BattleLogic.battleLogic.addNextQueue(() => { logic.EffectsTick(1); }, null);
+            BattleLogic.battleLogic.addNextQueue(() => { logic.EffectsTick(Effect.actionCall.OnStartTurn); }, null);
         }
 
         public void LinkedSpells()
@@ -80,7 +80,7 @@ namespace HeroLeft.BattleLogic {
 
         private void EffectsTick()
         {
-            logic.EffectsTick(2);
+            logic.EffectsTick(Effect.actionCall.OnEndTurn);
         }
 
         private void ReloadSpells()

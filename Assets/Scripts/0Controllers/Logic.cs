@@ -72,10 +72,11 @@ namespace HeroLeft.BattleLogic
                     {
                         if (spell == null)
                         {
-                            if (Randomize.Random(MissChanse(unitLogic)))
-                            {
-                                Avoided[i] = true;
-                            }
+                            if (impact.value > 0)
+                                if (Randomize.Random(MissChanse(unitLogic)))
+                                {
+                                    Avoided[i] = true;
+                                }
                         }
                         if (!Avoided[i])
                         {
@@ -97,15 +98,21 @@ namespace HeroLeft.BattleLogic
                                     BattleConstants.CalculateArmor(ref damage, unitProperty.Armor);
                                 }
                             }
-                            if (damage < 0) damage = 0;
+                            else if(unitProperty.MagicResist != 0)
+                            {
+                                BattleConstants.CalculateArmor(ref damage, unitProperty.MagicResist);
+                            }
+                            if (damage < 0 && spell == null) damage = 0;
                             Hp -= damage;
+
+                            if (Hp > this.unitObject.unitProperty.Hp)
+                                Hp = this.unitObject.unitProperty.Hp;
                         }
                     }
                 }
                 else
                 {
                     ChangeValue(impact, property);
-                    Debug.Log(UnitAction);
                 }
             }
             UnitObject unitObject = null;
@@ -118,7 +125,7 @@ namespace HeroLeft.BattleLogic
                 DestroyObject des = unitImage.GetComponentInChildren<DestroyObject>();
                 Transform indicator = (des != null) ? des.transform : null;
 
-                Transform loadedIndicator = Resources.Load<Transform>(GameManager.DamageIndicator[unitLogic != null && unitLogic.attackType != null ? unitLogic.attackType.damageIndicator : 0]);
+                Transform loadedIndicator = Resources.Load<Transform>(damage >= 0 ? (GameManager.DamageIndicator[unitLogic != null && unitLogic.attackType != null ? unitLogic.attackType.damageIndicator : 0]) : GameManager.HealIndicator);
                 if (des != null)
                     if (!des.name.StartsWith(loadedIndicator.name))
                     {
@@ -156,7 +163,7 @@ namespace HeroLeft.BattleLogic
                         }
 
                         if (indicator == null)
-                            indicator = MonoBehaviour.Instantiate<Transform>(loadedIndicator, unitImage);
+                            indicator = UnityEngine.Object.Instantiate<Transform>(loadedIndicator, unitImage);
                         if ((unitImage.localScale.x < 0))
                         {
                             indicator.GetChild(0).localScale = new Vector3(-1, 1, 1);
@@ -168,8 +175,8 @@ namespace HeroLeft.BattleLogic
                         if (Avoided.Length == 1)
                         {
                             if (Avoided[0])
-                                MonoBehaviour.Instantiate<Transform>(Resources.Load<Transform>(GameManager.MissIndicator), indicator.transform);
-                            txt[0].text = (val + damage).ToString();
+                                UnityEngine.Object.Instantiate<Transform>(Resources.Load<Transform>(GameManager.MissIndicator), indicator.transform);
+                            txt[0].text = (val + Math.Abs(damage)).ToString();
                         }
                         else
                         {
@@ -190,10 +197,8 @@ namespace HeroLeft.BattleLogic
                                 }
                             }
                         }
-
                     }
                 }
-
             }
 
             if (Hp <= this.unitObject.unitProperty.Hp / 3)
@@ -400,12 +405,12 @@ namespace HeroLeft.BattleLogic
                 }, null, 0);
         }
 
-        public void EffectsTick(uint OnStart)
+        public void EffectsTick(Effect.actionCall OnStart)
         {
             for (int i = unitEffects.Count - 1; i >= 0; i--)
             {
                 Effect effect = unitEffects[i];
-                if ((uint)effect.ActionCall == (uint)OnStart)
+                if (effect.ActionCall == OnStart)
                     if (effect.Execute(myUnit))
                     {
                         unitEffects.Remove(effect);
