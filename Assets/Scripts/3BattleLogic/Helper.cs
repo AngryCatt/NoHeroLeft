@@ -6,8 +6,8 @@ namespace HeroLeft {
         public static int EnemiesMinus { get { return Enemies - 1; } }
         public static Unit NewEnemy { get {
                 return (
-                    BattleControll.battleControll.EnemyQueue.transform.childCount == 0)
-? null : (Unit)BattleControll.battleControll.EnemyQueue.transform.GetChild(0).GetComponent<UnitLogic>().InitLogic();
+                    BattleControll.battleControll.enemyQueue.transform.childCount == 0)
+? null : (Unit)BattleControll.battleControll.enemyQueue.transform.GetChild(0).GetComponent<UnitLogic>().InitLogic();
                     } }
         public static Logic lstSpellFocused;
         public static Logic lstSpellCaller;

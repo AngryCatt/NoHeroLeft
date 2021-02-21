@@ -26,7 +26,7 @@ namespace HeroLeft {
         }
 
         public void LoadLevel(LevelObject level) {
-            BattleControll.LoadedLevel = level;
+            BattleControll.loadedLevel = level;
             SceneManager.LoadScene(GameLevel);
         }
 

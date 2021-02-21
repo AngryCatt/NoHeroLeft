@@ -129,6 +129,9 @@ namespace HeroLeft.BattleLogic {
             }
             void realize()
             {
+                if (passiveSettings.HaveChanse)
+                    if (!Randomize.Random(passiveSettings.chanse)) return;
+
                 if (unit == null || unit.unitlogic.Hp > 0)
                 {
                     if (unitEvents.MyUnit != null)
@@ -146,20 +149,7 @@ namespace HeroLeft.BattleLogic {
                         if (targs[i] != null)
                         {
                             Effect[] efs = (effectImpose) ? effects : null;
-                            /*
-                            if (queue != -2)
-                            {
-                                int q = i;
-                                BattleLogic.battleLogic.addAction(() =>
-                                {
-                                    targs[q].unitlogic.TakeImpact(ImpactValue, null, this, efs, spellType, effectZeroDuration, InstantAction);
-                                }, null, queue);
-                            }
-                            else
-                            {
-                            */
-                            targs[i].unitlogic.TakeImpact(ImpactValue, null, this, efs, spellType, effectZeroDuration, InstantAction);
-                            //    }
+                            targs[i].unitlogic.TakeImpact(ImpactValue, this, efs, spellType, effectZeroDuration, InstantAction);
                         }
                     }
                 }
@@ -181,7 +171,7 @@ namespace HeroLeft.BattleLogic {
             else if (splashType == SplashType.lstDamaget) targs = new Unit[1] { unitEvents.MyUnit.unitlogic.LastDamaget.myUnit };
             else if (splashType == SplashType.AllTargets)
             {
-                Transform enm = BattleControll.battleControll.EnemyUnitsParent.transform;
+                Transform enm = BattleControll.battleControll.enemyUnitsParent.transform;
                 int lenght = 0;
                 if (spellTarget.HasFlag(SpellTarget.Alies))
                 {
@@ -216,9 +206,9 @@ namespace HeroLeft.BattleLogic {
             switch (varible)
             {
                 case 0:
-                    for (int r = 0; r < BattleControll.battleControll.EnemyQueue.childCount; r++)
+                    for (int r = 0; r < BattleControll.battleControll.enemyQueue.childCount; r++)
                     {
-                        Logic lg = BattleControll.battleControll.EnemyQueue.GetChild(r).GetComponent<UnitLogic>().unitlogic;
+                        Logic lg = BattleControll.battleControll.enemyQueue.GetChild(r).GetComponent<UnitLogic>().unitlogic;
                         if (!lg.UnderSpell(this))
                         {
 
@@ -259,16 +249,16 @@ namespace HeroLeft.BattleLogic {
                                 }
                             }
                         }
-                        for (int i = 0; i < BattleControll.battleControll.EnemyUnitsParent.transform.childCount + BattleControll.battleControll.EnemyQueue.childCount; i++)
+                        for (int i = 0; i < BattleControll.battleControll.enemyUnitsParent.transform.childCount + BattleControll.battleControll.enemyQueue.childCount; i++)
                         {
                             Transform enemy = null;
-                            if (i < BattleControll.battleControll.EnemyUnitsParent.transform.childCount)
-                                enemy = BattleControll.battleControll.EnemyUnitsParent.transform.GetChild(i);
-                            else enemy = BattleControll.battleControll.EnemyQueue.transform.GetChild(i - BattleControll.battleControll.EnemyUnitsParent.transform.childCount);
+                            if (i < BattleControll.battleControll.enemyUnitsParent.transform.childCount)
+                                enemy = BattleControll.battleControll.enemyUnitsParent.transform.GetChild(i);
+                            else enemy = BattleControll.battleControll.enemyQueue.transform.GetChild(i - BattleControll.battleControll.enemyUnitsParent.transform.childCount);
                             Logic l = (enemy.GetComponent<UnitLogic>()) ? enemy.GetComponent<UnitLogic>().unitlogic : enemy.GetComponent<HeroLogic>().unitlogic;
                             if (Helper.lstDeathEnemy != l)
                             {
-                                l.TakeImpact(new Impact { value = 0 }, Helper.lstDeathEnemy, this, effects);
+                                l.TakeImpact(new Impact { value = 0 }, this, effects);
                             }
                         }
                     }
@@ -295,13 +285,13 @@ namespace HeroLeft.BattleLogic {
                             effects[q] = (Effect)Helper.lstDeathEnemy.unitEffects[q].Clone();
                         }
 
-                        for (int i = 0; i < BattleControll.battleControll.EnemyUnitsParent.transform.childCount; i++)
+                        for (int i = 0; i < BattleControll.battleControll.enemyUnitsParent.transform.childCount; i++)
                         {
-                            Transform enemy = BattleControll.battleControll.EnemyUnitsParent.transform.GetChild(i);
+                            Transform enemy = BattleControll.battleControll.enemyUnitsParent.transform.GetChild(i);
                             Logic l = (enemy.GetComponent<UnitLogic>()) ? enemy.GetComponent<UnitLogic>().unitlogic : enemy.GetComponent<HeroLogic>().unitlogic;
                             if (Helper.lstDeathEnemy != l)
                             {
-                                l.TakeImpact(new Impact { value = 0 }, Helper.lstDeathEnemy, this, effects);
+                                l.TakeImpact(new Impact { value = 0 }, this, effects);
                             }
                         }
                     }
@@ -343,8 +333,16 @@ namespace HeroLeft.BattleLogic {
             {
                 if (unitEvents.MyUnit == null)
                     unitEvents.MyUnit = Helper.lstDamagedEnemy.myUnit;
-                Execute(null, Helper.lstOffender.myUnit, true, 0);
+                if(Helper.lstOffender != null)
+                    Execute(null, Helper.lstOffender.myUnit, true, 0);
             }
+        }
+
+        public void SpellExecute(int target)
+        {
+            Logic targ = Helper.getTarget(target);
+
+            Execute(null, targ.myUnit, true, -2);
         }
 
         public void Interactive(string active)
@@ -355,7 +353,7 @@ namespace HeroLeft.BattleLogic {
                 if (active == "stun")
                 {
 
-                    HeroLeft.Interactive._StunInteractive.Stun(Helper.lstDamagedEnemy.myUnit, BattleControll.battleControll.InteractiveParent);
+                    HeroLeft.Interactive._StunInteractive.Stun(Helper.lstDamagedEnemy.myUnit, BattleControll.battleControll.interactiveParent);
                 }
             }
             catch
@@ -406,9 +404,9 @@ namespace HeroLeft.BattleLogic {
         {
             if (unitEvents.MyUnit.unitlogic == BattleControll.heroLogic.unitlogic)
             {
-                for (int i = 0; i < BattleControll.battleControll.EnemyUnitsParent.transform.childCount; i++)
+                for (int i = 0; i < BattleControll.battleControll.enemyUnitsParent.transform.childCount; i++)
                 {
-                    Logic logic = BattleControll.battleControll.EnemyUnitsParent.transform.GetChild(i).GetComponent<UnitLogic>().unitlogic;
+                    Logic logic = BattleControll.battleControll.enemyUnitsParent.transform.GetChild(i).GetComponent<UnitLogic>().unitlogic;
 
                     if (Helper.lstTargetEnemy != logic)
                     {

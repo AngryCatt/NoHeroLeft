@@ -27,7 +27,7 @@ MonoBehaviour:
     chanse: 0
   ManaCost: 0
   EnergyCost: 0
-  ReloadTurns: 0
+  ReloadTurns: 5
   InstantAction: 0
   Perk: 0
   spellClass: 0

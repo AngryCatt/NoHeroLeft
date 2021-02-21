@@ -33,11 +33,10 @@ namespace HeroLeft.BattleLogic {
         private void Start()
         {
             unitImage = transform.GetChild(0);
-            unitImage.SetParent(BattleControll.battleControll.UnitImages);
+            unitImage.SetParent(BattleControll.battleControll.unitImages);
             logic = new Logic(unitObject, transform, unitImage, this, HpSlider);
 
             BattleLogic.battleLogic.addMyNextQueue(NextTurnRepose, null);
-
             ReloadSliders();
             ReloadSpells();
         }
@@ -75,12 +74,13 @@ namespace HeroLeft.BattleLogic {
 
         public float GetRealPos()
         {
-            return (float)(UnitPosition + BattleControll.LoadedLevel.EnemiesOnField / BattleControll.LoadedLevel.EnemyRows + 1) / 2f;
+            return (float)(UnitPosition + BattleControll.loadedLevel.EnemiesOnField / BattleControll.loadedLevel.EnemyRows + 1) / 2f;
         }
 
         private void EffectsTick()
         {
             logic.EffectsTick(Effect.actionCall.OnEndTurn);
+            BattleControll.battleControll.HeroEffectsRefresh();
         }
 
         private void ReloadSpells()
@@ -140,7 +140,7 @@ namespace HeroLeft.BattleLogic {
                 SpellLogic spellLogic = SpellParent.GetChild(i).GetComponent<SpellLogic>();
                 spellLogic.spellInBattle.Reloading();
             }
-            if (BattleControll.battleControll.AttackSpell.spellInBattle.Reloading()) 
+            if (BattleControll.battleControll.attackSpell.spellInBattle.Reloading()) 
                 BattleControll.battleControll.AttackSpellTurn(logic.CanUseSpecSpell());
         }
 

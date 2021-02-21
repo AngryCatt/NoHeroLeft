@@ -26,6 +26,7 @@ namespace HeroLeft.BattleLogic
     {
         Refresh,
         Prolong,
+        ImpactMult,
         Stack,
         none,
     }

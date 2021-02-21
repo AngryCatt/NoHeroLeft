@@ -13,6 +13,7 @@ namespace HeroLeft.BattleLogic {
         public bool MirrorImage;
         public UnitProperty unitProperty;
         public Spell[] Spells;
+        public ItemObject[] Items;
 
         [Header("Only For nonHero units")]
         public int ActionsPerTurn = 1;
@@ -55,6 +56,7 @@ namespace HeroLeft.BattleLogic {
                 FirstLinePriority = FirstLinePriority,
                 attackType = attackType == null ? null : (AttackType)attackType.Clone(),
                 IsHero = IsHero,
+                Items = Items
             };
         }
 

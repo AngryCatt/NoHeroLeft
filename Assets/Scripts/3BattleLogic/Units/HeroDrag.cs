@@ -78,7 +78,7 @@ namespace HeroLeft.BattleLogic {
 
         public void Init()
         {
-            MaxPos = BattleControll.LoadedLevel.EnemyRows - 1;
+            MaxPos = BattleControll.loadedLevel.EnemyRows - 1;
             for (int i = 0; i < MaxPos * 2; i++)
             {
                 Instantiate(MarkPrefab, MarkParent);

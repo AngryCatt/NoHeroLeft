@@ -24,7 +24,7 @@ namespace HeroLeft.BattleLogic
         public void Start()
         {
            // InitLogic();
-            ChildImage.SetParent(BattleControll.battleControll.UnitImages);
+            ChildImage.SetParent(BattleControll.battleControll.unitImages);
 
             ChildSettingsApp();
             RefreshSpells();
@@ -149,7 +149,7 @@ namespace HeroLeft.BattleLogic
             BattleLogic.battleLogic.CreateSelectCircle(ChildImage, ref SelectCircle);
             nameTag.gameObject.SetActive(true);
 
-            logic.hpSlider = BattleControll.battleControll.EnemyHp;
+            logic.hpSlider = BattleControll.battleControll.enemyHp;
             BattleControll.battleControll.UnitInfoShow(this);
         }
 

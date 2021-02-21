@@ -51,7 +51,7 @@ public class GMShow : EditorWindow {
 
         if(BattleControll.battleControll != null)
         {
-            GridGroup gridGroup = BattleControll.battleControll.EnemyUnitsParent;
+            GridGroup gridGroup = BattleControll.battleControll.enemyUnitsParent;
             selectedPopup = EditorGUILayout.Popup("GridType", selectedPopup, new string[] { "UnitNames", "UnitAvailability", "MissChanse", "MissChanseOnMe", "CanAttack" });
             for (int y = 0; y < gridGroup.units.GetLength(1); y++)
             {

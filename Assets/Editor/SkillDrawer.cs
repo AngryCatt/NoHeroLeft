@@ -21,9 +21,9 @@ public class PassiveSkillDrawer : PropertyDrawer {
         EditorGUI.PropertyField(rect, property.FindPropertyRelative("IsPassiveSkill"), label);
         if (property.FindPropertyRelative("IsPassiveSkill").boolValue == true) {
             rect.y += EditorGUIUtility.singleLineHeight;
-            EditorGUI.PropertyField(rect, property.FindPropertyRelative("HaveChanse"), label);
+            EditorGUI.PropertyField(rect, property.FindPropertyRelative("HaveChanse"), new GUIContent("HaveChanse"));
             rect.y += EditorGUIUtility.singleLineHeight;
-            EditorGUI.PropertyField(rect, property.FindPropertyRelative("chanse"), label);
+            EditorGUI.PropertyField(rect, property.FindPropertyRelative("chanse"), new GUIContent("Chanse"));
         }
 
         EditorGUI.indentLevel = indent;

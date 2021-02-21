@@ -20,7 +20,7 @@ namespace HeroLeft.BattleLogic {
 
         public void JustHitStrategy()
         {
-            Transform enemies = BattleControll.battleControll.EnemyUnitsParent.transform;
+            Transform enemies = BattleControll.battleControll.enemyUnitsParent.transform;
             for (int i = 0; i < regions.Count; i++)
             {
                 if (!regions[i].NextTurnRepose(1))
@@ -54,7 +54,10 @@ namespace HeroLeft.BattleLogic {
                         try
                         {
                             switch (sp.spell.spellTarget){
-                                case Spell.SpellTarget.Enemy:
+                                case Spell.SpellTarget.Enemy & Spell.SpellTarget.Alies:
+                                    sp.spell.Execute(null, BattleControll.heroLogic);
+                                    break;
+                                case  Spell.SpellTarget.Enemy:
                                     sp.spell.Execute(null, BattleControll.heroLogic);
                                     break;
                                 case Spell.SpellTarget.Alies:
@@ -71,7 +74,7 @@ namespace HeroLeft.BattleLogic {
                         }
                         finally
                         {
-                            enamy.unitlogic.UnitAction--;
+                            enamy.unitlogic.UnitAction -= sp.spell.EnergyCost;
                             act -= sp.spell.EnergyCost;
                         }
                     }
@@ -138,10 +141,10 @@ namespace HeroLeft.BattleLogic {
 
         public void PositionReload(UnitLogic unit)
         {
-            int Lines = BattleControll.LoadedLevel.EnemiesOnField / BattleControll.LoadedLevel.EnemyRows;
+            int Lines = BattleControll.loadedLevel.EnemiesOnField / BattleControll.loadedLevel.EnemyRows;
             Vector2Int myPos = unit.position;
             UnitLogic swapUnit = null;
-            Transform enemies = BattleControll.battleControll.EnemyUnitsParent.transform;
+            Transform enemies = BattleControll.battleControll.enemyUnitsParent.transform;
 
             for (int i = 0; i < enemies.childCount; i++)
             {
@@ -206,14 +209,14 @@ namespace HeroLeft.BattleLogic {
             if (swapUnit != null && swapUnit != unit)
             {
                 Vector2Int newPos = swapUnit.position;
-                Vector3 pos1 = BattleControll.battleControll.EnemyUnitsParent.GetPosition(newPos.x, newPos.y);
-                Vector3 pos2 = BattleControll.battleControll.EnemyUnitsParent.GetPosition(myPos.x, myPos.y);
+                Vector3 pos1 = BattleControll.battleControll.enemyUnitsParent.GetPosition(newPos.x, newPos.y);
+                Vector3 pos2 = BattleControll.battleControll.enemyUnitsParent.GetPosition(myPos.x, myPos.y);
 
                 swapUnit.SetPosition(myPos, pos2);
                 unit.SetPosition(newPos, pos1);
 
-                BattleControll.battleControll.EnemyUnitsParent.units[myPos.x, myPos.y] = swapUnit;
-                BattleControll.battleControll.EnemyUnitsParent.units[newPos.x, newPos.y] = unit;
+                BattleControll.battleControll.enemyUnitsParent.units[myPos.x, myPos.y] = swapUnit;
+                BattleControll.battleControll.enemyUnitsParent.units[newPos.x, newPos.y] = unit;
 
                 //   unit.unitlogic.UnitAction = 0;
 
@@ -224,7 +227,7 @@ namespace HeroLeft.BattleLogic {
         public void GoToFirstLine()
         {
             if (BattleControll.battleControll.EnemyLines <= 1) return;
-            UnitLogic[,] units = BattleControll.battleControll.EnemyUnitsParent.units;
+            UnitLogic[,] units = BattleControll.battleControll.enemyUnitsParent.units;
 
             int y = units.GetLength(1) - 1;
 
@@ -245,12 +248,12 @@ namespace HeroLeft.BattleLogic {
                     }
                     if (logic != null)
                     {
-                        Vector3 pos = BattleControll.battleControll.EnemyUnitsParent.GetPosition(x, y);
+                        Vector3 pos = BattleControll.battleControll.enemyUnitsParent.GetPosition(x, y);
 
                         logic.SetPosition(new Vector2Int(x, y), pos);
 
-                        BattleControll.battleControll.EnemyUnitsParent.units[logic.position.x, logic.position.y] = null;
-                        BattleControll.battleControll.EnemyUnitsParent.units[x, y] = logic;
+                        BattleControll.battleControll.enemyUnitsParent.units[logic.position.x, logic.position.y] = null;
+                        BattleControll.battleControll.enemyUnitsParent.units[x, y] = logic;
                     }
                 }
             }

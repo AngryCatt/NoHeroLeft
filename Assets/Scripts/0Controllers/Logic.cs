@@ -10,8 +10,8 @@ namespace HeroLeft.BattleLogic
     public class Logic : ICloneable
     {
 
-        [SerializeField] private UnitProperty unitProperty;
-        [SerializeField] public Slider hpSlider;
+        public UnitProperty unitProperty;
+        public Slider hpSlider;
 
         public List<Effect> unitEffects = new List<Effect>();
         private List<Spell> callingSpells;
@@ -31,7 +31,7 @@ namespace HeroLeft.BattleLogic
 
         public Logic LastDamaget = null;
 
-        public float position { get { return (transform.GetComponent<HeroLogic>()) ? (transform.GetComponent<HeroLogic>().UnitPosition + BattleControll.LoadedLevel.EnemyRows - 1f) / 2f : transform.GetComponent<UnitLogic>().position.x; } }
+        public float position { get { return (transform.GetComponent<HeroLogic>()) ? (transform.GetComponent<HeroLogic>().UnitPosition + BattleControll.loadedLevel.EnemyRows - 1f) / 2f : transform.GetComponent<UnitLogic>().position.x; } }
 
         public float Hp
         {
@@ -52,17 +52,12 @@ namespace HeroLeft.BattleLogic
 
         public int UnitAction;
 
-        public void TakeImpact(Impact impact, Logic unitLogic, Spell spell = null, Effect[] effects = null, string property = "Hp", bool zeroDuration = false, bool InstantAction = false)
+        public void TakeImpact(Impact impact, Logic unitLogic, string property = "Hp")
         {
-            if (transform == null) return;
+            if (transform == null || Hp <= 0) return;
             Helper.lstDamagedEnemy = this;
-            if (Hp <= 0) return;
             float damage = 0;
-            bool[] Avoided = new bool[1];
-            if (unitLogic != null)
-            {
-                Avoided = new bool[Resources.Load<Transform>(GameManager.DamageIndicator[unitLogic != null && unitLogic.attackType != null ? unitLogic.attackType.damageIndicator : 0]).GetComponentsInChildren<Text>().Length];
-            }
+            bool[] Avoided = new bool[Resources.Load<Transform>(GameManager.DamageIndicator[unitLogic.attackType != null ? unitLogic.attackType.damageIndicator : 0]).GetComponentsInChildren<Text>().Length];
 
             if (property != null && property.Length > 0)
             {
@@ -70,14 +65,12 @@ namespace HeroLeft.BattleLogic
                 {
                     for (int i = 0; i < Avoided.Length; i++)
                     {
-                        if (spell == null)
-                        {
-                            if (impact.value > 0)
-                                if (Randomize.Random(MissChanse(unitLogic)))
-                                {
-                                    Avoided[i] = true;
-                                }
-                        }
+                        if (impact.value > 0)
+                            if (Randomize.Random(MissChanse(unitLogic)))
+                            {
+                                Avoided[i] = true;
+                            }
+
                         if (!Avoided[i])
                         {
                             if (!impact.isProcent)
@@ -89,20 +82,33 @@ namespace HeroLeft.BattleLogic
                                 damage = (float)Math.Round(Hp / 100 * impact.value, 1);
                             }
 
-                            if (unitLogic != null)
+                            damage /= Avoided.Length;
+                            damage -= unitProperty.DamageResist;
+                            if (unitProperty.Armor != 0)
                             {
-                                damage /= Avoided.Length;
-                                damage -= unitProperty.DamageResist;
-                                if (unitProperty.Armor != 0)
-                                {
-                                    BattleConstants.CalculateArmor(ref damage, unitProperty.Armor);
-                                }
+                                BattleConstants.CalculateArmor(ref damage, unitProperty.Armor);
                             }
-                            else if(unitProperty.MagicResist != 0)
+                            UnitProperty enemyProperty = unitLogic.unitProperty;
+
+                            if (Randomize.Random(enemyProperty.AttackCritChanse))
+                                damage += damage / 100 * enemyProperty.CriticalDamage;
+
+                            if (Randomize.Random(unitProperty.BlockChanse))
                             {
-                                BattleConstants.CalculateArmor(ref damage, unitProperty.MagicResist);
+                                if (!Randomize.Random(unitProperty.AbsoluteBlockChanse))
+                                    damage -= unitProperty.BlockDamage;
+                                else damage = 0;
                             }
-                            if (damage < 0 && spell == null) damage = 0;
+
+                            if (Randomize.Random(unitProperty.ParryChanse))
+                            {
+                                damage /= 2;
+                                if (!unitLogic.unitObject.IsRangeUnit)
+                                    unitLogic.TakeImpact(new Impact { value = damage / 1.5f }, this, "Hp");
+                            }
+
+                            if (damage < 0) damage = 0;
+
                             Hp -= damage;
 
                             if (Hp > this.unitObject.unitProperty.Hp)
@@ -115,28 +121,24 @@ namespace HeroLeft.BattleLogic
                     ChangeValue(impact, property);
                 }
             }
-            UnitObject unitObject = null;
+            UnitObject unitObject = unitLogic.unitObject;
             UnitLogic MyLogic = transform.GetComponent<UnitLogic>();
-            if (unitLogic != null)
-                unitObject = unitLogic.unitObject;
 
             if (property == "Hp")
             {
                 DestroyObject des = unitImage.GetComponentInChildren<DestroyObject>();
                 Transform indicator = (des != null) ? des.transform : null;
 
-                Transform loadedIndicator = Resources.Load<Transform>(damage >= 0 ? (GameManager.DamageIndicator[unitLogic != null && unitLogic.attackType != null ? unitLogic.attackType.damageIndicator : 0]) : GameManager.HealIndicator);
-                if (des != null)
-                    if (!des.name.StartsWith(loadedIndicator.name))
-                    {
-                        indicator = null;
-                        des = null;
-                    }
-
-                if (des != null && des.lifeTime > 0.2f)
+                Transform loadedIndicator = Resources.Load<Transform>(damage >= 0 ? (GameManager.DamageIndicator[unitLogic.attackType != null ? unitLogic.attackType.damageIndicator : 0]) : GameManager.HealIndicator);
+                if (des != null && des.name.StartsWith(loadedIndicator.name) && des.lifeTime > 0.2f)
                 {
                     indicator.GetComponent<Animation>().Stop();
                     indicator.GetComponent<Animation>().Play(des.stop.name);
+                }
+                else
+                {
+                    indicator = null;
+                    des = null;
                 }
 
                 for (int avd = 0; avd < Avoided.Length; avd++)
@@ -150,14 +152,14 @@ namespace HeroLeft.BattleLogic
                                 BattleLog.battleLog.addLog("<color=red>" + MyLogic.UnitName + "</color>"
                                     + " теряет " +
                                     "<color=red>" + damage.ToString() + "</color>" +
-                                    " от " + "<color=green>" + ((spell != null) ? spell.SpellName : unitObject.UnitName) + "</color>");
+                                    " от " + "<color=green>" + (unitObject.UnitName) + "</color>");
                             else
                                 BattleLog.battleLog.addLog("<color=green>" + this.unitObject.UnitName + "</color>" + " теряет " +
                                   "<color=red>" + damage.ToString() + "</color>");
                             if (Hp <= 0)
                             {
                                 BattleLog.battleLog.addLog("<color=red>" + ((MyLogic.UnitName != null) ? MyLogic.UnitName : this.unitObject.UnitName) + "</color>"
-                                + " умерает от  " + "<color=green>" + ((spell != null) ? spell.SpellName : unitObject.UnitName) + "</color>");
+                                + " умерает от  " + "<color=green>" + (unitObject.UnitName) + "</color>");
                                 Death(this);
                             }
                         }
@@ -204,13 +206,121 @@ namespace HeroLeft.BattleLogic
             if (Hp <= this.unitObject.unitProperty.Hp / 3)
                 EnemyControll.enemyControll.NeedRefreshPos = true;
 
+            if (unitEvents.OnGetDamage != null)
+            {
+                unitEvents.OnGetDamage.Invoke();
+            }
+        }
+
+        public void TakeImpact(Impact impact, Spell spell, Effect[] effects = null, string property = "Hp", bool zeroDuration = false, bool InstantAction = false)
+        {
+            if (transform == null) return;
+            Helper.lstDamagedEnemy = this;
+            float damage = 0;
+
+            if (property != null && property.Length > 0)
+            {
+                if (property == "Hp")
+                {
+
+                    if (!impact.isProcent)
+                    {
+                        damage = impact.value;
+                    }
+                    else
+                    {
+                        damage = (float)Math.Round(Hp / 100 * impact.value, 1);
+                    }
+
+                    if (unitProperty.MagicResist != 0)
+                    {
+                        BattleConstants.CalculateArmor(ref damage, unitProperty.MagicResist);
+                    }
+
+                    if (spell.unitEvents.MyUnit != null)
+                    {
+                        UnitProperty enemyProperty = spell.unitEvents.MyUnit.unitlogic.unitProperty;
+
+                        if (Randomize.Random(enemyProperty.MagicCritChanse) && spell.splashType <= (Spell.SplashType)9)
+                            damage += damage / 100 * enemyProperty.CriticalDamage;
+
+                        if (Randomize.Random(unitProperty.ParryChanse))
+                        {
+                            damage /= 2;
+                        }
+                    }
+
+                    Hp -= damage;
+
+                    if (Hp > unitObject.unitProperty.Hp)
+                        Hp = unitObject.unitProperty.Hp;
+                }
+                else
+                {
+                    ChangeValue(impact, property);
+                }
+            }
+            UnitLogic MyLogic = transform.GetComponent<UnitLogic>();
+
+            if (property == "Hp")
+            {
+                DestroyObject des = unitImage.GetComponentInChildren<DestroyObject>();
+                Transform indicator = (des != null) ? des.transform : null;
+
+                Transform loadedIndicator = Resources.Load<Transform>(damage >= 0 ? (GameManager.DamageIndicator[0]) : GameManager.HealIndicator);
+                if (des != null && des.name.StartsWith(loadedIndicator.name) && des.lifeTime > 0.2f)
+                {
+                    indicator.GetComponent<Animation>().Stop();
+                    indicator.GetComponent<Animation>().Play(des.stop.name);
+                }
+                else
+                {
+                    indicator = null;
+                    des = null;
+                }
+
+                if (damage != 0)
+                {
+                    if (!transform.GetComponent<HeroLogic>())
+                        BattleLog.battleLog.addLog("<color=red>" + MyLogic.UnitName + "</color>"
+                            + " теряет " +
+                            "<color=red>" + damage.ToString() + "</color>" +
+                            " от " + "<color=green>" + (spell.SpellName) + "</color>");
+                    else
+                        BattleLog.battleLog.addLog("<color=green>" + unitObject.UnitName + "</color>" + " теряет " +
+                          "<color=red>" + damage.ToString() + "</color>");
+                    if (Hp <= 0)
+                    {
+                        BattleLog.battleLog.addLog("<color=red>" + ((MyLogic.UnitName != null) ? MyLogic.UnitName : unitObject.UnitName) + "</color>"
+                        + " умерает от  " + "<color=green>" + (spell.SpellName) + "</color>");
+                        Death(this);
+                    }
+
+                    if (indicator == null)
+                        indicator = UnityEngine.Object.Instantiate<Transform>(loadedIndicator, unitImage);
+
+                    if ((unitImage.localScale.x < 0))
+                    {
+                        indicator.GetChild(0).localScale = new Vector3(-1, 1, 1);
+                    }
+
+                    indicator.transform.localPosition = Vector3.zero;
+                    Text txt = indicator.GetComponentInChildren<Text>();
+                    float val = (txt.text == "Miss") ? 0 : float.Parse(txt.text);
+                    txt.text = (val + Math.Abs(damage)).ToString();
+                }
+            }
+
+            if (Hp <= unitObject.unitProperty.Hp / 3)
+                EnemyControll.enemyControll.NeedRefreshPos = true;
+
             if (spell != null && effects != null)
                 if (spell.spellClass != classType.none)
                 {
                     SpecClassSpellPassive.spec.UseSpell(spell, myUnit, spell.unitEvents.MyUnit);
                 }
 
-            if (unitLogic != null && unitEvents.OnGetDamage != null)
+            if (unitEvents.OnGetDamage != null)
             {
                 unitEvents.OnGetDamage.Invoke();
             }
@@ -254,8 +364,18 @@ namespace HeroLeft.BattleLogic
                                     unitEffects[i].Duration = Math.Max(unitEffects[i].Duration, eff.Duration);
                                     stop = true;
                                     break;
+                                case EffectStacking.ImpactMult:
+                                    if (unitEffects[i].Duration == eff.Duration)
+                                    {
+                                        unitEffects[i].ImpactValue.value += eff.ImpactValue.value;
+                                        unitEffects[i].stacks++;
+                                        stop = true;
+                                    }
+                                    break;
                             }
-                            break;
+
+                            if (stop)
+                                break;
                         }
                         else
                         {
@@ -272,15 +392,16 @@ namespace HeroLeft.BattleLogic
                         unitEffects.Add(eff);
                     }
                     if (InstantAction) { eff.Duration++; eff.Execute((Unit)MyLogic); }
+
+                    if (myUnit.unitlogic == BattleControll.heroLogic.unitlogic)
+                        BattleControll.battleControll.HeroEffectsRefresh();
                 }
 
-            if (spell != null)
-                if (PutEvents && spell.unitEvents.AfterDead != null && spell.unitEvents.AfterDead.GetPersistentEventCount() > 0 && !UnderLink(spell))
-                {
-                    spell.linkedUnits.Add(this);
-                    unitEvents.AfterDead.AddListener(() => { if (UnderSpell(spell)) spell.unitEvents.AfterDead.Invoke(); });
-                }
-
+            if (PutEvents && spell.unitEvents.AfterDead != null && spell.unitEvents.AfterDead.GetPersistentEventCount() > 0 && !UnderLink(spell))
+            {
+                spell.linkedUnits.Add(this);
+                unitEvents.AfterDead.AddListener(() => { if (UnderSpell(spell)) spell.unitEvents.AfterDead.Invoke(); });
+            }
         }
 
         public void ChangeValue(Impact impact, string property = "Hp")
@@ -382,12 +503,12 @@ namespace HeroLeft.BattleLogic
             {
                 DestroyObject.Destroy(transform.gameObject);
 
-                if (BattleControll.battleControll.UnitInfo == (Unit)transform.GetComponent<UnitLogic>())
+                if (BattleControll.battleControll.unitInfo == (Unit)transform.GetComponent<UnitLogic>())
                 {
                     BattleControll.battleControll.UnitInfoHide();
                 }
 
-                if (BattleControll.LoadedLevel.enemySpawn == LevelObject.EnemySpawn.afterDead)
+                if (BattleControll.loadedLevel.enemySpawn == LevelObject.EnemySpawn.afterDead)
                 {
                     BattleControll.battleControll.StartCoroutine(BattleLogic.battleLogic.coroutines.actionAfterSomeSec(0.5f, BattleControll.battleControll.SpawnEnemies));
                 }
@@ -437,9 +558,16 @@ namespace HeroLeft.BattleLogic
 
         private void Init()
         {
+            //ItemCalcul
+            if (unitObject.Items != null)
+                for (int i = 0; i < unitObject.Items.Length; i++)             
+                    if (unitObject.Items[i] != null)
+                        unitObject.unitProperty += unitObject.Items[i].ItemProperty;
+                
             unitProperty = (UnitProperty)unitObject.unitProperty.Clone();
             unitEvents = new EventAction();
             unitEvents.MyUnit = myUnit;
+
             for (int i = 0; i < unitObject.Spells.Length; i++)
             {
                 unitObject.Spells[i].linkedUnits.Add(this);
@@ -727,7 +855,7 @@ namespace HeroLeft.BattleLogic
                     if (BattleControll.battleControll.ConstainsPositionUnit(unitLogic.position.x - 1) == null)
                         return false;
                 }
-                if (unitLogic.position.x < BattleControll.LoadedLevel.EnemyRows - 1)
+                if (unitLogic.position.x < BattleControll.loadedLevel.EnemyRows - 1)
                 {
                     if (BattleControll.battleControll.ConstainsPositionUnit(unitLogic.position.x + 1) == null)
                         return false;

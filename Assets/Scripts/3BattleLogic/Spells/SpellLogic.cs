@@ -86,7 +86,7 @@ namespace HeroLeft.BattleLogic {
             if (GetComponent<Button>().interactable == true)
                 if (byRegion && CanBeUsed() && spellImage.DummyUnit != null)
                 {
-                    regionSpell = Instantiate<RegionSpell>(spellImage.DummyUnit, BattleControll.battleControll.DummyParent);
+                    regionSpell = Instantiate<RegionSpell>(spellImage.DummyUnit, BattleControll.battleControll.dummyParent);
                 }
         }
 

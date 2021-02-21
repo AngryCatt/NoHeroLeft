@@ -26,7 +26,7 @@ MonoBehaviour:
     HaveChanse: 0
     chanse: 0
   ManaCost: 0
-  EnergyCost: 1
+  EnergyCost: 0
   ReloadTurns: 1
   InstantAction: 1
   Perk: 0
@@ -43,7 +43,7 @@ MonoBehaviour:
       isProcent: 0
     MaxImpact: 0
     ActionCall: 1
-    effectStacking: 3
+    effectStacking: 2
     stacks: 0
     spellType: Hp
     spellTarget: 2
