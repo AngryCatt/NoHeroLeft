@@ -10,16 +10,18 @@ namespace HeroLeft.Interfaces {
         public delegate void afterEnd();
         public delegate bool condition();
 
-        public IEnumerator conditionCoroutine(condition condition, afterEnd afterEnd) {
+        public IEnumerator conditionCoroutine(condition condition, afterEnd afterEnd, float time = 0f) {
             yield return new WaitForEndOfFrame();
             yield return new WaitForEndOfFrame();
             yield return new WaitForEndOfFrame();
-            if (condition == null)
+
+            if (condition == null && time <= 0.1f)
             {
                 afterEnd();
                 yield break;
             }
-            yield return new WaitForSeconds(0.1f);
+
+            yield return new WaitForSeconds(time);
 
             if (condition != null)
             yield return new WaitUntil(() => condition());

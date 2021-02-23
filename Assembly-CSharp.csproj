@@ -11,7 +11,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{C18AEAD9-CB0E-11C6-BDA8-29805C3BA0B8}</ProjectGuid>
+    <ProjectGuid>{3186DD54-606C-94DC-283A-E02E28281509}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -55,6 +55,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Resources\Spells\HeroSpells\tst.cs" />
      <Compile Include="Assets\Scripts\0Controllers\BattleLogic.cs" />
      <Compile Include="Assets\Scripts\0Controllers\Logic.cs" />
      <Compile Include="Assets\Scripts\0Controllers\MenuController.cs" />
@@ -102,8 +103,6 @@
      <Compile Include="Assets\Scripts\_PlayFab\AuthController.cs" />
      <Compile Include="Assets\Scripts\_PlayFab\ErrorText.cs" />
      <Compile Include="Assets\Scripts\_PlayFab\PlayFabAuth.cs" />
-     <Compile Include="Assets\test\test_.cs" />
-     <Compile Include="Assets\еые.cs" />
      <None Include="Assets\Resources\Xmls\Levels.xml" />
      <None Include="Assets\Resources\Xmls\Units.xml" />
  <Reference Include="UnityEngine">
@@ -644,50 +643,50 @@
  <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.14f1/Editor/Data/MonoBleedingEdge/lib/mono/unityscript/Boo.Lang.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Timeline.Editor">
- <HintPath>P:/UnityProjects/DimaProject/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+ <HintPath>P:/Git/NoHeroLeft/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.VSCode.Editor">
- <HintPath>P:/UnityProjects/DimaProject/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+ <HintPath>P:/Git/NoHeroLeft/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro.Editor">
- <HintPath>P:/UnityProjects/DimaProject/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+ <HintPath>P:/Git/NoHeroLeft/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.UI">
- <HintPath>P:/UnityProjects/DimaProject/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+ <HintPath>P:/Git/NoHeroLeft/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Timeline">
- <HintPath>P:/UnityProjects/DimaProject/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+ <HintPath>P:/Git/NoHeroLeft/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
  </Reference>
  <Reference Include="Unity.CollabProxy.Editor">
- <HintPath>P:/UnityProjects/DimaProject/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+ <HintPath>P:/Git/NoHeroLeft/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Rider.Editor">
- <HintPath>P:/UnityProjects/DimaProject/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+ <HintPath>P:/Git/NoHeroLeft/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.2D.Sprite.Editor">
- <HintPath>P:/UnityProjects/DimaProject/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
+ <HintPath>P:/Git/NoHeroLeft/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.2D.Tilemap.Editor">
- <HintPath>P:/UnityProjects/DimaProject/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
+ <HintPath>P:/Git/NoHeroLeft/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro">
- <HintPath>P:/UnityProjects/DimaProject/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+ <HintPath>P:/Git/NoHeroLeft/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.UI">
- <HintPath>P:/UnityProjects/DimaProject/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+ <HintPath>P:/Git/NoHeroLeft/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="PlayFab.csproj">
-      <Project>{B72E89DC-4052-6566-D939-88504645DBEE}</Project>
+      <Project>{34FF1FAA-0B73-96BB-B058-38C29E206C9E}</Project>
       <Name>PlayFab</Name>
     </ProjectReference>
     <ProjectReference Include="PlayFabEditorExtensions.csproj">
-      <Project>{C9F69491-C200-C079-B666-926AC2062442}</Project>
+      <Project>{E161DC34-7998-37F7-F514-54D2311A3323}</Project>
       <Name>PlayFabEditorExtensions</Name>
     </ProjectReference>
     <ProjectReference Include="PlayFabSDKEditor.csproj">
-      <Project>{A254C0B4-A136-F5AD-8A6E-C12F0924C970}</Project>
+      <Project>{A5CB9068-5119-1F35-5656-BCE4A370DA41}</Project>
       <Name>PlayFabSDKEditor</Name>
     </ProjectReference>
   </ItemGroup>

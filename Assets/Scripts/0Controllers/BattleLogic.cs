@@ -45,12 +45,14 @@ namespace HeroLeft.BattleLogic {
             return selectedAction == null;
         }
 
-        public void addAction(UnityAction action, Coroutines.condition condition = null, int order = -1)
+        public void addAction(UnityAction action, Coroutines.condition condition = null, int order = -1, float time = 0.1f)
         {
             UnityAction unityAction = () =>
             {
-                action();
-                BattleControll.battleControll.StartCoroutine(coroutines.conditionCoroutine(condition, NextQueueStep));
+                if(action != null)
+                    action();
+
+                BattleControll.battleControll.StartCoroutine(coroutines.conditionCoroutine(condition, NextQueueStep, time));
             };
             if (order == -1)
             {

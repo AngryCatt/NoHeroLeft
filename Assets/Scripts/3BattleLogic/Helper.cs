@@ -16,6 +16,7 @@ namespace HeroLeft {
         public static Logic lstDamagedEnemy;
         public static Logic lstTargetEnemy;
         public static Logic lstKiller;
+        public static float lstDamage;
 
 
         public static Logic getTarget(int targ)
@@ -47,6 +48,7 @@ namespace HeroLeft {
             lstOffender = null;
             lstDamagedEnemy = null;
             lstSpellCaller = null;
+            lstDamage = 0;
         }
 
         public static Helper helper;

@@ -43,7 +43,7 @@ MonoBehaviour:
       isProcent: 0
     MaxImpact: 10
     ActionCall: 0
-    effectStacking: 2
+    effectStacking: 3
     stacks: 1
     spellType: '*Armor'
     spellTarget: 0

@@ -11,7 +11,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{B72E89DC-4052-6566-D939-88504645DBEE}</ProjectGuid>
+    <ProjectGuid>{34FF1FAA-0B73-96BB-B058-38C29E206C9E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>PlayFab</AssemblyName>
@@ -694,10 +694,10 @@
  <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.14f1/Editor/Data/NetStandard/compat/2.0.0/shims/netfx/System.Xml.Serialization.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.UI">
- <HintPath>P:/UnityProjects/DimaProject/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+ <HintPath>P:/Git/NoHeroLeft/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.UI">
- <HintPath>P:/UnityProjects/DimaProject/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+ <HintPath>P:/Git/NoHeroLeft/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>

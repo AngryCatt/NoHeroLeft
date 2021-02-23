@@ -100,6 +100,7 @@ namespace HeroLeft.BattleLogic {
                 }
 
                 if (enamy.unitlogic.CanAttack(BattleControll.heroLogic))
+                {
                     for (int q = 0; q < act; q++)
                     {
                         if (enamy.unitlogic.UnitAction > 0)
@@ -107,6 +108,8 @@ namespace HeroLeft.BattleLogic {
                             enamy.unitlogic.AttackUnit(BattleControll.heroLogic, 1);
                         }
                     }
+                    BattleLogic.battleLogic.addAction(null, null, -1, 0.5f);
+                }
             }
 
             for (int i = 0; i < regions.Count; i++)

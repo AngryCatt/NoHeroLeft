@@ -10,8 +10,8 @@ namespace HeroLeft.BattleLogic {
         public Logic unitlogic { get { return logic; } set { logic = value; } }
         public bool Alien { get; set; }
 
-        public float Energy { get { return (EnergySlider != null) ? EnergySlider.value : 100; } set { if (EnergySlider == null) return; EnergySlider.value = value; EnergySlider.GetComponentInChildren<Text>().text = value.ToString() + "/100"; SpellsChecker(); } }
-        public float Mana { get { return (ManaSlider != null) ? ManaSlider.value : 100; } set { if (ManaSlider == null) return; ManaSlider.value = value; ManaSlider.GetComponentInChildren<Text>().text = value.ToString() + "/100"; SpellsChecker(); } }
+        public float Energy { get { return (EnergySlider != null) ? EnergySlider.value : 100; } set { if (EnergySlider == null) return; EnergySlider.value = value; EnergySlider.GetComponentInChildren<Text>().text = value.ToString() + "/" + unitObject.unitProperty.Energy; SpellsChecker(); } }
+        public float Mana { get { return (ManaSlider != null) ? ManaSlider.value : 100; } set { if (ManaSlider == null) return; ManaSlider.value = value; ManaSlider.GetComponentInChildren<Text>().text = value.ToString() + "/" + unitObject.unitProperty.Mana; SpellsChecker(); } }
 
         [SerializeField] private Slider HpSlider;
         [SerializeField] private Slider EnergySlider;
@@ -63,12 +63,12 @@ namespace HeroLeft.BattleLogic {
             if (HpSlider != null && EnergySlider != null && ManaSlider != null)
             {
                 HpSlider.maxValue = unitObject.unitProperty.Hp;
-                EnergySlider.maxValue = 100;
-                ManaSlider.maxValue = 100;
+                EnergySlider.maxValue = unitObject.unitProperty.Energy;
+                ManaSlider.maxValue = unitObject.unitProperty.Mana;
 
                 logic.Hp = unitObject.unitProperty.Hp;
-                Energy = 100;
-                Mana = 100;
+                Energy = unitObject.unitProperty.Energy;
+                Mana = unitObject.unitProperty.Mana;
             }
         }
 

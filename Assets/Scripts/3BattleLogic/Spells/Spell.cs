@@ -39,6 +39,8 @@ namespace HeroLeft.BattleLogic {
 
         [HideInInspector] public List<Logic> linkedUnits = new List<Logic>();
 
+        public float Damage { get { return ImpactValue.value; } set { ImpactValue.value = value; } }
+
         public object Clone()
         {
             return new Spell()
@@ -169,6 +171,7 @@ namespace HeroLeft.BattleLogic {
             Unit[] targs = null;
             if (splashType == SplashType.SoloTarget || splashType == SplashType.Field) targs = new Unit[1] { unit };
             else if (splashType == SplashType.lstDamaget) targs = new Unit[1] { unitEvents.MyUnit.unitlogic.LastDamaget.myUnit };
+            else if (splashType == SplashType.lstTarget) targs = new Unit[1] { Helper.lstTargetEnemy.myUnit };
             else if (splashType == SplashType.AllTargets)
             {
                 Transform enm = BattleControll.battleControll.enemyUnitsParent.transform;
@@ -341,8 +344,7 @@ namespace HeroLeft.BattleLogic {
         public void SpellExecute(int target)
         {
             Logic targ = Helper.getTarget(target);
-
-            Execute(null, targ.myUnit, true, -2);
+            Execute(null, targ.myUnit, true, 0);
         }
 
         public void Interactive(string active)

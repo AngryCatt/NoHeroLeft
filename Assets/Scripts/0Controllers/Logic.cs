@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace HeroLeft.BattleLogic
 {
-    [System.Serializable]
+    [Serializable]
     public class Logic : ICloneable
     {
 
@@ -63,6 +63,7 @@ namespace HeroLeft.BattleLogic
             {
                 if (property == "Hp")
                 {
+                    float totalDamage = 0;
                     for (int i = 0; i < Avoided.Length; i++)
                     {
                         if (impact.value > 0)
@@ -110,15 +111,18 @@ namespace HeroLeft.BattleLogic
                             if (damage < 0) damage = 0;
 
                             Hp -= damage;
-
+                            totalDamage += damage;
                             if (Hp > this.unitObject.unitProperty.Hp)
                                 Hp = this.unitObject.unitProperty.Hp;
                         }
                     }
+                    Helper.lstDamage = totalDamage;
                 }
                 else
                 {
                     ChangeValue(impact, property);
+                    Debug.Log(unitProperty.Armor);
+
                 }
             }
             UnitObject unitObject = unitLogic.unitObject;
@@ -258,6 +262,7 @@ namespace HeroLeft.BattleLogic
                 else
                 {
                     ChangeValue(impact, property);
+                    Debug.Log(unitProperty.Armor);
                 }
             }
             UnitLogic MyLogic = transform.GetComponent<UnitLogic>();
@@ -558,15 +563,24 @@ namespace HeroLeft.BattleLogic
 
         private void Init()
         {
-            //ItemCalcul
-            if (unitObject.Items != null)
-                for (int i = 0; i < unitObject.Items.Length; i++)             
-                    if (unitObject.Items[i] != null)
-                        unitObject.unitProperty += unitObject.Items[i].ItemProperty;
-                
-            unitProperty = (UnitProperty)unitObject.unitProperty.Clone();
             unitEvents = new EventAction();
             unitEvents.MyUnit = myUnit;
+
+            //ItemCalcul
+            if (unitObject.Items != null)
+                for (int i = 0; i < unitObject.Items.Length; i++)
+                {
+                    if (unitObject.Items[i] != null)
+                        unitObject.unitProperty += unitObject.Items[i].ItemProperty;
+
+                    int quate = i;
+                    if(unitObject.Items[i].ItemAction.OnAttack != null && unitObject.Items[i].ItemAction.OnAttack.GetPersistentEventCount() > 0)
+                    {
+                        unitEvents.OnAttack.AddListener(() => unitObject.Items[quate].ItemAction.OnAttack.Invoke());
+                    }
+                }
+                
+            unitProperty = (UnitProperty)unitObject.unitProperty.Clone();
 
             for (int i = 0; i < unitObject.Spells.Length; i++)
             {
@@ -936,5 +950,10 @@ namespace HeroLeft.BattleLogic
             pos = position - unit.position;
             return Math.Max(Math.Abs(pos * GameManager.MissChansePerPosition) + unitProperty.Evasion, 0);
         }
+    }
+
+    public class statistic
+    {
+        public float PhysRoundDamage;
     }
 }

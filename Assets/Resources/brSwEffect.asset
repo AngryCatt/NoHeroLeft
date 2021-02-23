@@ -1,0 +1,74 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ec7376fefde62b47bfe2736c5f8c8d2, type: 3}
+  m_Name: brSwEffect
+  m_EditorClassIdentifier: 
+  SpellName: BroadSword_effect
+  HeroSpell: 0
+  ImpactValue:
+    value: 0
+    isProcent: 0
+  uImage:
+    img: {fileID: 0}
+    pos: {x: 0, y: 0}
+    size: {x: 0, y: 0}
+  passiveSettings:
+    IsPassiveSkill: 0
+    HaveChanse: 0
+    chanse: 0
+  ManaCost: 1
+  EnergyCost: 1
+  ReloadTurns: 0
+  InstantAction: 1
+  Perk: 0
+  spellClass: 0
+  spellTarget: 2
+  spellType: Hp
+  effects:
+  - Name: broad sword wound
+    Function: 'this;*Damage;=;HeroLeft.Helper;lstDamage
+
+      this;*Damage;/;this;10'
+    VisualEffect: {fileID: 0}
+    Duration: 3
+    ImpactValue:
+      value: 1
+      isProcent: 0
+    MaxImpact: 0
+    ActionCall: 2
+    effectStacking: 0
+    stacks: 0
+    spellType: Hp
+    spellTarget: 2
+    splashType: 0
+    spell: {fileID: 0}
+  splashType: 8
+  Targets: 1
+  DamageDecrase: 100
+  DummyUnit: {fileID: 0}
+  CallEveryTurn: 0
+  unitEvents:
+    target: 0
+    BattleCry:
+      m_PersistentCalls:
+        m_Calls: []
+    OnGetDamage:
+      m_PersistentCalls:
+        m_Calls: []
+    OnAttack:
+      m_PersistentCalls:
+        m_Calls: []
+    AfterDead:
+      m_PersistentCalls:
+        m_Calls: []
+  effectImage: {fileID: 0}
+  linkedUnits: []

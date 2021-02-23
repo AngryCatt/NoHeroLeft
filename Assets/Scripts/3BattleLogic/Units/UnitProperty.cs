@@ -2,10 +2,12 @@
 using System;
 
 namespace HeroLeft.BattleLogic {
-    [System.Serializable]
+    [Serializable]
     public class UnitProperty : ICloneable {
         public SafeFloat Hp;
         public SafeFloat Energy;
+        public SafeFloat Mana;
+
         public SafeFloat HpRegen;
         public SafeFloat Damage;
 
@@ -41,7 +43,7 @@ namespace HeroLeft.BattleLogic {
         public object Clone() {
             return new UnitProperty { Hp = Hp, Damage = Damage, 
             Evasion = Evasion, HpRegen = HpRegen, Energy = Energy,
-            Armor = Armor, DamageResist = DamageResist,
+            Armor = Armor, DamageResist = DamageResist, Mana = Mana,
             AttackCritChanse = AttackCritChanse, BlockChanse = BlockChanse,
             BlockDamage = BlockDamage, BloodResist = BloodResist,
             CriticalDamage = CriticalDamage, DarkResist = DarkResist,
@@ -80,6 +82,7 @@ namespace HeroLeft.BattleLogic {
             PoisonResist = a.PoisonResist + b.PoisonResist,
             PureResist = a.PureResist + b.PureResist,
             Energy = a.Energy + b.Energy,
+            Mana = a.Mana + b.Mana,
         };
 
         public static UnitProperty operator -(UnitProperty a, UnitProperty b) => new UnitProperty()
@@ -109,6 +112,7 @@ namespace HeroLeft.BattleLogic {
             PoisonResist = a.PoisonResist - b.PoisonResist,
             PureResist = a.PureResist - b.PureResist,
             Energy = a.Energy - b.Energy,
+            Mana = a.Mana - b.Mana,
         };
     }
 }
