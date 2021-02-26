@@ -6,6 +6,7 @@ namespace HeroLeft.BattleLogic {
     public class TurnController : MonoBehaviour {
         public static TurnController turnController;
         public Text text;
+        public int TurnNumber = 0;
         public int TurnSeconds = 30;
         private static TurnPosition beforeTurn = TurnPosition.Nothing;
 
@@ -43,6 +44,7 @@ namespace HeroLeft.BattleLogic {
         Coroutine queueCoroutine;
 
         public void NextTurn() {
+            TurnNumber++; 
             beforeTurn = BattleLogic.battleLogic.turnPosition;
             if(queueCoroutine != null) {
                 StopCoroutine(queueCoroutine);

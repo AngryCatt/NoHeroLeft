@@ -30,6 +30,7 @@ namespace HeroLeft.BattleLogic
         private bool momentalEnd = false;
 
         public Logic LastDamaget = null;
+        public statistic Stats;
 
         public float position { get { return (transform.GetComponent<HeroLogic>()) ? (transform.GetComponent<HeroLogic>().UnitPosition + BattleControll.loadedLevel.EnemyRows - 1f) / 2f : transform.GetComponent<UnitLogic>().position.x; } }
 
@@ -63,7 +64,6 @@ namespace HeroLeft.BattleLogic
             {
                 if (property == "Hp")
                 {
-                    float totalDamage = 0;
                     for (int i = 0; i < Avoided.Length; i++)
                     {
                         if (impact.value > 0)
@@ -111,12 +111,12 @@ namespace HeroLeft.BattleLogic
                             if (damage < 0) damage = 0;
 
                             Hp -= damage;
-                            totalDamage += damage;
+                            Helper.lstOffender.Stats.AddDamage(damage);
+
                             if (Hp > this.unitObject.unitProperty.Hp)
                                 Hp = this.unitObject.unitProperty.Hp;
                         }
                     }
-                    Helper.lstDamage = totalDamage;
                 }
                 else
                 {
@@ -380,7 +380,13 @@ namespace HeroLeft.BattleLogic
                             }
 
                             if (stop)
+                            {
+                                if (unitEffects[i].refreshFunction)
+                                {
+                                    unitEffects[i].EffectFunction();
+                                }
                                 break;
+                            }
                         }
                         else
                         {
@@ -551,6 +557,7 @@ namespace HeroLeft.BattleLogic
             this.myUnit = myUnit;
             this.transform = transform;
             ReloadStartPosition(transform.position);
+            Stats = new statistic();
 
             unitImage = unitImg;
             hpSlider = HpSlider;
@@ -954,6 +961,27 @@ namespace HeroLeft.BattleLogic
 
     public class statistic
     {
-        public float PhysRoundDamage;
+        public float getPhysRoundDamage { get {
+                RoundDispose();
+                return phys_round_damage;
+            }
+        }
+
+        private float phys_round_damage = 0;
+        private int turn_lastHit = 0;
+
+        private void RoundDispose()
+        {
+            if (TurnController.turnController.TurnNumber == turn_lastHit) return;
+
+            phys_round_damage = 0;
+
+            turn_lastHit = TurnController.turnController.TurnNumber;
+        }
+
+        public void AddDamage(float damage)
+        {
+            phys_round_damage += damage;
+        }
     }
 }
