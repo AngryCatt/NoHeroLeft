@@ -10,6 +10,7 @@ namespace HeroLeft.BattleLogic {
 
         public SafeFloat HpRegen;
         public SafeFloat Damage;
+        public DamageType damageType;
 
         [Range(0, 100)] public SafeInt DamageResist;
         [Range(0, 100)] public SafeInt MagicResist;
@@ -52,6 +53,7 @@ namespace HeroLeft.BattleLogic {
             LightResist = LightResist, MagicCritChanse = MagicCritChanse,
             NatureResist = NatureResist, ParryChanse = ParryChanse,
             PoisonResist = PoisonResist, PureResist = PureResist,
+            damageType = damageType,
             MagicResist = MagicResist, AbsoluteBlockChanse = AbsoluteBlockChanse };
         }
 
@@ -83,6 +85,7 @@ namespace HeroLeft.BattleLogic {
             PureResist = a.PureResist + b.PureResist,
             Energy = a.Energy + b.Energy,
             Mana = a.Mana + b.Mana,
+            damageType = a.damageType,
         };
 
         public static UnitProperty operator -(UnitProperty a, UnitProperty b) => new UnitProperty()
@@ -113,6 +116,14 @@ namespace HeroLeft.BattleLogic {
             PureResist = a.PureResist - b.PureResist,
             Energy = a.Energy - b.Energy,
             Mana = a.Mana - b.Mana,
+            damageType = a.damageType,
         };
+    }
+
+    public enum DamageType : int
+    {
+        Phys = 0,
+        Magic = 1,
+        Pure = 2,
     }
 }

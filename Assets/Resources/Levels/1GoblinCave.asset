@@ -15,10 +15,10 @@ MonoBehaviour:
   LevelName: Goblin Cave
   Ico: {fileID: 21300000, guid: d97ec8e20b43aef46aec307878f482ae, type: 3}
   BackGround: {fileID: 21300000, guid: 15f4b23284bed44468bf9d0a02b27add, type: 3}
-  EnemiesOnField: 8
-  EnemyRows: 4
+  EnemiesOnField: 1
+  EnemyRows: 1
   Units:
-  - {fileID: 11400000, guid: 415908e255c8ade4a8f04084c662246b, type: 2}
+  - {fileID: 11400000, guid: 70fd4dfd4cea95a48a8994376ffd9cc8, type: 2}
   - {fileID: 11400000, guid: 70fd4dfd4cea95a48a8994376ffd9cc8, type: 2}
   - {fileID: 11400000, guid: 70fd4dfd4cea95a48a8994376ffd9cc8, type: 2}
   - {fileID: 11400000, guid: 70fd4dfd4cea95a48a8994376ffd9cc8, type: 2}

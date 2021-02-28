@@ -62,7 +62,7 @@ namespace HeroLeft.BattleLogic {
 
         public bool Dispelling(Unit target, int st = 0, bool proc = false)
         {
-            if (spellType != "Hp")
+            if (spellType != "Hp" && !spellType.EndsWith("="))
             {
                 if (st == 0)
                 {
@@ -320,6 +320,7 @@ namespace HeroLeft.Interfaces {
                             endValue = (float)startValue / val;
                             break;
                     }
+
                     fieldInfo = mainField.fild ? (FieldInfo)mainField.field : null;
                     propertyInfo = !mainField.fild ? (PropertyInfo)mainField.field : null;
                     float value = 0;

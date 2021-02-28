@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemName: BroadSword
   itemID: 0
+  SlotType: 0
+  NeedEnergy: 15
   ItemProperty:
     Hp:
       value: 0
@@ -25,6 +27,7 @@ MonoBehaviour:
       value: 0
     Damage:
       value: 0
+    damageType: 0
     DamageResist:
       value: 0
     MagicResist:
@@ -80,13 +83,13 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 11400000, guid: 55d9ea04d3b104d468bf901ece43e40e, type: 2}
           m_MethodName: SpellExecute
-          m_Mode: 3
+          m_Mode: 5
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 8
             m_FloatArgument: 0
-            m_StringArgument: 
+            m_StringArgument: 8
             m_BoolArgument: 0
           m_CallState: 2
     AfterDead:

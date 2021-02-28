@@ -105,7 +105,7 @@ namespace HeroLeft.BattleLogic {
                     {
                         if (enamy.unitlogic.UnitAction > 0)
                         {
-                            enamy.unitlogic.AttackUnit(BattleControll.heroLogic, 1);
+                            enamy.unitlogic.AttackUnit(BattleControll.heroLogic);
                         }
                     }
                     BattleLogic.battleLogic.addAction(null, null, -1, 0.5f);

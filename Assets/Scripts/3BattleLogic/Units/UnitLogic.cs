@@ -155,7 +155,7 @@ namespace HeroLeft.BattleLogic
 
         public void RealizeTo(Unit unit)
         {
-            logic.AttackUnit(unit, 1);
+            logic.AttackUnit(unit);
         }
 
         public void ReloadNameTag()

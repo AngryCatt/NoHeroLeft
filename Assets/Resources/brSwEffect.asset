@@ -35,14 +35,18 @@ MonoBehaviour:
   spellType: Hp
   effects:
   - Name: broad sword wound
-    Function: 'this;*Damage;=;stats5;*getPhysRoundDamage
+    Function: 'this;*Damage;*;this;20
+
+      this;*Damage;*;stats5;*turn_damage_mult
+
+      this;*Damage;+;stats5;last_phys_hit
 
       this;*Damage;/;this;20'
     refreshFunction: 1
     VisualEffect: {fileID: 0}
     Duration: 2
     ImpactValue:
-      value: 1
+      value: 0
       isProcent: 0
     MaxImpact: 0
     ActionCall: 2

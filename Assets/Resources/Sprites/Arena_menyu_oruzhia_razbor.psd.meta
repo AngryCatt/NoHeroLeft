@@ -1,0 +1,656 @@
+fileFormatVersion: 2
+guid: 96619844a235e784790c4b5c88e5271c
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -2684070050539471348
+    second: Arena_menyu_oruzhia_razbor_0
+  - first:
+      213: 137164241947460333
+    second: Arena_menyu_oruzhia_razbor_1
+  - first:
+      213: -4204367579020687573
+    second: Arena_menyu_oruzhia_razbor_2
+  - first:
+      213: -8615677534369108260
+    second: Arena_menyu_oruzhia_razbor_3
+  - first:
+      213: 2575026322559582862
+    second: Arena_menyu_oruzhia_razbor_4
+  - first:
+      213: 9092513234138542327
+    second: Arena_menyu_oruzhia_razbor_5
+  - first:
+      213: 5478020470377045598
+    second: Arena_menyu_oruzhia_razbor_6
+  - first:
+      213: 9093007300941077366
+    second: Arena_menyu_oruzhia_razbor_7
+  - first:
+      213: 1655066134482192217
+    second: Arena_menyu_oruzhia_razbor_8
+  - first:
+      213: -7300888092708098989
+    second: Arena_menyu_oruzhia_razbor_9
+  - first:
+      213: -5294982781528523790
+    second: Arena_menyu_oruzhia_razbor_10
+  - first:
+      213: 8759227888309970137
+    second: Arena_menyu_oruzhia_razbor_11
+  - first:
+      213: -6697211966425160956
+    second: Arena_menyu_oruzhia_razbor_12
+  - first:
+      213: 2111784170549135843
+    second: Arena_menyu_oruzhia_razbor_13
+  - first:
+      213: 4511195978659768365
+    second: Arena_menyu_oruzhia_razbor_14
+  - first:
+      213: 7896323088543904332
+    second: Arena_menyu_oruzhia_razbor_15
+  - first:
+      213: -564833898471247777
+    second: Arena_menyu_oruzhia_razbor_16
+  - first:
+      213: 6524852122161473110
+    second: Arena_menyu_oruzhia_razbor_17
+  - first:
+      213: -8626866474583515725
+    second: Arena_menyu_oruzhia_razbor_18
+  - first:
+      213: 6220834699983781860
+    second: Arena_menyu_oruzhia_razbor_19
+  - first:
+      213: 5469601044814963974
+    second: Arena_menyu_oruzhia_razbor_0
+  - first:
+      213: -7490308773526031488
+    second: Arena_menyu_oruzhia_razbor_1
+  - first:
+      213: 6358134146029956125
+    second: Arena_menyu_oruzhia_razbor_2
+  - first:
+      213: -8319253252126202812
+    second: Arena_menyu_oruzhia_razbor_3
+  - first:
+      213: -6748301219286340116
+    second: Arena_menyu_oruzhia_razbor_4
+  - first:
+      213: -4915743137588674145
+    second: Arena_menyu_oruzhia_razbor_5
+  - first:
+      213: 4305879436256944984
+    second: Arena_menyu_oruzhia_razbor_6
+  - first:
+      213: -4306611178736103514
+    second: Arena_menyu_oruzhia_razbor_7
+  - first:
+      213: 8881215239738977887
+    second: Arena_menyu_oruzhia_razbor_8
+  - first:
+      213: 4342918092403214061
+    second: Arena_menyu_oruzhia_razbor_9
+  - first:
+      213: -4746834913047006738
+    second: Arena_menyu_oruzhia_razbor_10
+  - first:
+      213: 7005129288644218831
+    second: Arena_menyu_oruzhia_razbor_11
+  - first:
+      213: -851368765066960015
+    second: Arena_menyu_oruzhia_razbor_12
+  - first:
+      213: -6989062771128009055
+    second: Arena_menyu_oruzhia_razbor_13
+  - first:
+      213: -2127616325577928901
+    second: Arena_menyu_oruzhia_razbor_14
+  - first:
+      213: 3572394987512084520
+    second: Arena_menyu_oruzhia_razbor_15
+  - first:
+      213: 657107199701684326
+    second: Arena_menyu_oruzhia_razbor_16
+  - first:
+      213: -7806838498692975135
+    second: Arena_menyu_oruzhia_razbor_17
+  - first:
+      213: -3240630312653237281
+    second: Arena_menyu_oruzhia_razbor_18
+  - first:
+      213: 1265212336124031556
+    second: Arena_menyu_oruzhia_razbor_19
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Arena_menyu_oruzhia_razbor_0
+      rect:
+        serializedVersion: 2
+        x: 460
+        y: 1488
+        width: 787
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6052d4bcb2de7eb40800000000000000
+      internalID: 5469601044814963974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arena_menyu_oruzhia_razbor_1
+      rect:
+        serializedVersion: 2
+        x: 1267
+        y: 1488
+        width: 625
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0833df71bd31d0890800000000000000
+      internalID: -7490308773526031488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arena_menyu_oruzhia_razbor_2
+      rect:
+        serializedVersion: 2
+        x: 2116
+        y: 2247
+        width: 196
+        height: 197
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1ca568a151ac3850800000000000000
+      internalID: 6358134146029956125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arena_menyu_oruzhia_razbor_3
+      rect:
+        serializedVersion: 2
+        x: 2635
+        y: 2331
+        width: 532
+        height: 114
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44421869e331c8c80800000000000000
+      internalID: -8319253252126202812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arena_menyu_oruzhia_razbor_4
+      rect:
+        serializedVersion: 2
+        x: 2706
+        y: 2313
+        width: 426
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ced2a1b8bc73952a0800000000000000
+      internalID: -6748301219286340116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arena_menyu_oruzhia_razbor_5
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 1659
+        width: 390
+        height: 650
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9186fc39a5c7cbb0800000000000000
+      internalID: -4915743137588674145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arena_menyu_oruzhia_razbor_6
+      rect:
+        serializedVersion: 2
+        x: 2116
+        y: 2028
+        width: 196
+        height: 197
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85321c3a88e81cb30800000000000000
+      internalID: 4305879436256944984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arena_menyu_oruzhia_razbor_7
+      rect:
+        serializedVersion: 2
+        x: 2635
+        y: 1526
+        width: 565
+        height: 702
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6af45b943f7db34c0800000000000000
+      internalID: -4306611178736103514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arena_menyu_oruzhia_razbor_8
+      rect:
+        serializedVersion: 2
+        x: 2111
+        y: 1918
+        width: 82
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5e6d62b43a604b70800000000000000
+      internalID: 8881215239738977887
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arena_menyu_oruzhia_razbor_9
+      rect:
+        serializedVersion: 2
+        x: 2110
+        y: 1804
+        width: 67
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de68f4acef4254c30800000000000000
+      internalID: 4342918092403214061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arena_menyu_oruzhia_razbor_10
+      rect:
+        serializedVersion: 2
+        x: 2212
+        y: 1806
+        width: 28
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee13960ebcadf1eb0800000000000000
+      internalID: -4746834913047006738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arena_menyu_oruzhia_razbor_11
+      rect:
+        serializedVersion: 2
+        x: 2622
+        y: 1475
+        width: 593
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fcfc25729f7373160800000000000000
+      internalID: 7005129288644218831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arena_menyu_oruzhia_razbor_12
+      rect:
+        serializedVersion: 2
+        x: 509
+        y: 38
+        width: 787
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17322517e945f24f0800000000000000
+      internalID: -851368765066960015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arena_menyu_oruzhia_razbor_13
+      rect:
+        serializedVersion: 2
+        x: 1329
+        y: 918
+        width: 101
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1aef106707cd10f90800000000000000
+      internalID: -6989062771128009055
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arena_menyu_oruzhia_razbor_14
+      rect:
+        serializedVersion: 2
+        x: 1429
+        y: 607
+        width: 347
+        height: 347
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3f0b9779303972e0800000000000000
+      internalID: -2127616325577928901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arena_menyu_oruzhia_razbor_15
+      rect:
+        serializedVersion: 2
+        x: 2014
+        y: 508
+        width: 626
+        height: 957
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8283b045052b39130800000000000000
+      internalID: 3572394987512084520
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arena_menyu_oruzhia_razbor_16
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 38
+        width: 390
+        height: 641
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 660129144838e1900800000000000000
+      internalID: 657107199701684326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arena_menyu_oruzhia_razbor_17
+      rect:
+        serializedVersion: 2
+        x: 1329
+        y: 542
+        width: 94
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e5bf827fb988a390800000000000000
+      internalID: -7806838498692975135
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arena_menyu_oruzhia_razbor_18
+      rect:
+        serializedVersion: 2
+        x: 1429
+        y: 38
+        width: 347
+        height: 347
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd3d0f576e7f603d0800000000000000
+      internalID: -3240630312653237281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arena_menyu_oruzhia_razbor_19
+      rect:
+        serializedVersion: 2
+        x: 1946
+        y: 100
+        width: 1330
+        height: 385
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4427d149aefee8110800000000000000
+      internalID: 1265212336124031556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

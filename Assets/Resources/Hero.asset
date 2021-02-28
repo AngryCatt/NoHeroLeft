@@ -30,6 +30,7 @@ MonoBehaviour:
       value: 0
     Damage:
       value: 5
+    damageType: 1
     DamageResist:
       value: 0
     MagicResist:
@@ -76,13 +77,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1c8e91a94b0f96b45b0989d1eea8fed3, type: 2}
   - {fileID: 11400000, guid: ad6dcfac7820d1a41b6295900fdc9f0c, type: 2}
   - {fileID: 11400000, guid: fe5f2f3cbed9aad429b86fdc725ff9d7, type: 2}
-  - {fileID: 11400000, guid: 55d9ea04d3b104d468bf901ece43e40e, type: 2}
-  Items:
-  - {fileID: 11400000, guid: 2ed58bf9491e0754883417e69a5e1b8e, type: 2}
+  - {fileID: 11400000, guid: 06d4183a695f5374ebf4bf41720bf026, type: 2}
+  Items: []
   ActionsPerTurn: 1
   FirstLinePriority: 0
   IsRangeUnit: 0
-  attackType: {fileID: 11400000, guid: ae3bbfd2ecca51240ad38b2affae6382, type: 2}
+  attackType: {fileID: 0}
   ico:
     img: {fileID: 21300000, guid: 873c1b3350bcd9f4a98cd5eba18c2779, type: 3}
     pos: {x: 0, y: 0}

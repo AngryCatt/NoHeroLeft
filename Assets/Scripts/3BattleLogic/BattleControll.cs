@@ -218,6 +218,12 @@ namespace HeroLeft.BattleLogic
                 Effect ef = heroLogic.unitlogic.unitEffects[i];
                 Transform obj = hrEffects.GetChild(i);
 
+                if(ef.Duration <= 0)
+                {
+                    Destroy(hrEffects.GetChild(i).gameObject);
+                    continue;
+                }
+
                 if (ef.effectStacking != EffectStacking.Stack)
                     obj.GetComponentInChildren<Text>().text = ef.Duration.ToString();
                 else

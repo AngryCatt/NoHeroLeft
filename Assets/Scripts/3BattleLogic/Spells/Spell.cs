@@ -151,6 +151,7 @@ namespace HeroLeft.BattleLogic {
                         if (targs[i] != null)
                         {
                             Effect[] efs = (effectImpose) ? effects : null;
+                            Debug.LogError("YY");
                             targs[i].unitlogic.TakeImpact(ImpactValue, this, efs, spellType, effectZeroDuration, InstantAction);
                         }
                     }
@@ -302,49 +303,11 @@ namespace HeroLeft.BattleLogic {
             }
         }
 
-        public void SpellExecute(string cmd)
+        public void SpellExecute(string arg)
         {
-            string[] cmds = cmd.Split(';');
-            string unit = cmds[0];
-            string arg = null;
-            if (cmds.Length > 1)
-                arg = cmds[1];
-
-            if (unit == "Null" || unit.Length == 0)
-            {
-                if (unitEvents.MyUnit == null)
-                    unitEvents.MyUnit = Helper.lstSpellFocused.myUnit;
-                if (arg == null || arg.Length == 0)
-                {
-                    Execute(null, unitEvents.MyUnit, true, 0);
-                }
-                else if (arg == "0")
-                {
-                    BattleLogic.battleLogic.addNextQueue(() =>
-                    {
-                        Execute(null, unitEvents.MyUnit, true, 0);
-                    }, null, 0);
-                }
-            }
-            else if (unit == "LastDamaget")
-            {
-                if (unitEvents.MyUnit == null)
-                    unitEvents.MyUnit = Helper.lstOffender.myUnit;
-                Execute(null, Helper.lstDamagedEnemy.myUnit, true, 0);
-            }
-            else
-            {
-                if (unitEvents.MyUnit == null)
-                    unitEvents.MyUnit = Helper.lstDamagedEnemy.myUnit;
-                if(Helper.lstOffender != null)
-                    Execute(null, Helper.lstOffender.myUnit, true, 0);
-            }
-        }
-
-        public void SpellExecute(int target)
-        {
-            Logic targ = Helper.getTarget(target);
-            Execute(null, targ.myUnit, true, 0);
+            string[] cmd = arg.Split(';');
+            Logic targ = Helper.getTarget(int.Parse(cmd[0]));
+            Execute(null, targ.myUnit, true, cmd.Length > 1 ? int.Parse(cmd[1]) : 0 );
         }
 
         public void Interactive(string active)
@@ -471,6 +434,34 @@ namespace HeroLeft.BattleLogic {
             {
                 if (logic.unitEffects[0].Dispelling(logic.myUnit)) logic.unitEffects.RemoveAt(0);
             }
+        }
+
+        public void EffectDispell(string effect)
+        {
+            BattleLogic.battleLogic.addAction(() =>
+            {
+                string[] cmd = effect.Split(';');
+                int tg = int.Parse(cmd[0]);
+                Logic log = Helper.getTarget(tg);
+
+                for(int i = 0; i < log.unitEffects.Count; i++)
+                {
+                    if (log.unitEffects[i].Name == cmd[1])
+                    {
+                        log.unitEffects.RemoveAt(i);
+                        break;
+                    }
+                }
+            },null, 0, 0f);
+        }
+
+        public void RepairDamageType(int targ)
+        {
+            BattleLogic.battleLogic.addAction(() =>
+            {
+                Helper.getTarget(targ).ReloadDamageType();
+            }, null, 2, 0f);
+            
         }
 
         public void TotemSummon(SummonLogic ward)

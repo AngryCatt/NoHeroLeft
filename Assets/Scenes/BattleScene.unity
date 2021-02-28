@@ -2267,6 +2267,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 2136685381}
+  TurnNumber: 0
   TurnSeconds: 30
 --- !u!1 &934498489
 GameObject:
@@ -5078,6 +5079,14 @@ PrefabInstance:
       propertyPath: SpellParent
       value: 
       objectReference: {fileID: 1498680333}
+    - target: {fileID: 1246715255, guid: 1bd1d30685bbe80448621ce2ab8770a9, type: 3}
+      propertyPath: logic.damageType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1246715255, guid: 1bd1d30685bbe80448621ce2ab8770a9, type: 3}
+      propertyPath: logic.unitProperty.damageType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1666395544, guid: 1bd1d30685bbe80448621ce2ab8770a9, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0

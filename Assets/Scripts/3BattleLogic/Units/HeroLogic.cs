@@ -129,7 +129,7 @@ namespace HeroLeft.BattleLogic {
         {
             if (Energy >= BattleConstants.EnergyCost)
             {
-                logic.AttackUnit(unit, BattleConstants.EnergyCost);
+                logic.AttackUnit(unit);
             }
         }
 

@@ -19,6 +19,7 @@ namespace HeroLeft.BattleLogic
         //AttackTypeSpell
         public AttackType attackType;
         public SummonLogic totem;
+        public DamageType damageType = DamageType.Phys;
 
         public EventAction unitEvents;
 
@@ -32,7 +33,8 @@ namespace HeroLeft.BattleLogic
         public Logic LastDamaget = null;
         public statistic Stats;
 
-        public float position { get { return (transform.GetComponent<HeroLogic>()) ? (transform.GetComponent<HeroLogic>().UnitPosition + BattleControll.loadedLevel.EnemyRows - 1f) / 2f : transform.GetComponent<UnitLogic>().position.x; } }
+        private int EnergyAttackCost = 1;
+        public float position { get { return (isHero) ? (transform.GetComponent<HeroLogic>().UnitPosition + BattleControll.loadedLevel.EnemyRows - 1f) / 2f : transform.GetComponent<UnitLogic>().position.x; } }
 
         public float Hp
         {
@@ -59,11 +61,13 @@ namespace HeroLeft.BattleLogic
             Helper.lstDamagedEnemy = this;
             float damage = 0;
             bool[] Avoided = new bool[Resources.Load<Transform>(GameManager.DamageIndicator[unitLogic.attackType != null ? unitLogic.attackType.damageIndicator : 0]).GetComponentsInChildren<Text>().Length];
+            if (unitLogic.damageType == DamageType.Phys) Debug.LogError("dd");
 
             if (property != null && property.Length > 0)
             {
                 if (property == "Hp")
                 {
+                    float totalDamage = 0;
                     for (int i = 0; i < Avoided.Length; i++)
                     {
                         if (impact.value > 0)
@@ -111,12 +115,14 @@ namespace HeroLeft.BattleLogic
                             if (damage < 0) damage = 0;
 
                             Hp -= damage;
-                            Helper.lstOffender.Stats.AddDamage(damage);
+                            totalDamage += damage;
 
                             if (Hp > this.unitObject.unitProperty.Hp)
                                 Hp = this.unitObject.unitProperty.Hp;
                         }
                     }
+                    Helper.lstOffender.Stats.AddDamage(totalDamage);
+
                 }
                 else
                 {
@@ -152,7 +158,7 @@ namespace HeroLeft.BattleLogic
                     {
                         if (!Avoided[avd])
                         {
-                            if (!transform.GetComponent<HeroLogic>())
+                            if (!isHero)
                                 BattleLog.battleLog.addLog("<color=red>" + MyLogic.UnitName + "</color>"
                                     + " теряет " +
                                     "<color=red>" + damage.ToString() + "</color>" +
@@ -262,7 +268,6 @@ namespace HeroLeft.BattleLogic
                 else
                 {
                     ChangeValue(impact, property);
-                    Debug.Log(unitProperty.Armor);
                 }
             }
             UnitLogic MyLogic = transform.GetComponent<UnitLogic>();
@@ -286,7 +291,7 @@ namespace HeroLeft.BattleLogic
 
                 if (damage != 0)
                 {
-                    if (!transform.GetComponent<HeroLogic>())
+                    if (!isHero)
                         BattleLog.battleLog.addLog("<color=red>" + MyLogic.UnitName + "</color>"
                             + " теряет " +
                             "<color=red>" + damage.ToString() + "</color>" +
@@ -340,7 +345,8 @@ namespace HeroLeft.BattleLogic
                     bool stop = false;
                     Effect eff = (Effect)effect.Clone();
                     eff.spell = spell;
-                    eff.EffectFunction();
+                    if (!eff.refreshFunction)
+                        eff.EffectFunction();
 
                     for (int i = 0; i < unitEffects.Count; i++)
                     {
@@ -399,6 +405,8 @@ namespace HeroLeft.BattleLogic
 
                     if (!stop)
                     {
+                        if (eff.refreshFunction)
+                            eff.EffectFunction();
                         ChangeValue(eff.ImpactValue, eff.spellType);
                         unitEffects.Add(eff);
                     }
@@ -419,11 +427,12 @@ namespace HeroLeft.BattleLogic
         {
             if (property == "Hp" || property.Length == 0) return;
 
-            try
-            {
+           // try
+          //  {
 
                 bool isProp = false;
                 bool haveMin = false;
+                bool equ = false;
                 if (property.StartsWith("*"))
                 {
                     property = property.Replace("*", "");
@@ -433,6 +442,10 @@ namespace HeroLeft.BattleLogic
                 {
                     property = property.Replace("^", "");
                     haveMin = true;
+                }else if (property.EndsWith("="))
+                {
+                    property = property.Replace("=", "");
+                    equ = true;
                 }
                 object val = null;
                 if (isProp)
@@ -443,11 +456,11 @@ namespace HeroLeft.BattleLogic
                 {
                     val = GetType().GetField(property).GetValue(this);
                 }
-
+                
                 float fVal = 0;
-                if (val is int)
+                if (val is float)
                 {
-                    fVal = Convert.ToInt32(val);
+                    fVal = Convert.ToSingle(val);
                 }
                 else if (val is SafeInt)
                 {
@@ -459,11 +472,14 @@ namespace HeroLeft.BattleLogic
                 }
                 else
                 {
-                    fVal = (float)val;
+                    fVal = (int)val;
                 }
                 if (!impact.isProcent)
                 {
-                    fVal -= impact.value;
+                    if (!equ)
+                        fVal -= impact.value;
+                    else
+                        fVal = impact.value;
                 }
                 else
                 {
@@ -472,9 +488,9 @@ namespace HeroLeft.BattleLogic
                 if (haveMin && fVal < 0) fVal = 0;
 
                 object endvalue;
-                if (val is int)
+                if (val is float)
                 {
-                    endvalue = Convert.ToInt32(Math.Ceiling(fVal));
+                    endvalue = Convert.ToSingle(fVal);
                 }
                 else if (val is SafeInt)
                 {
@@ -486,7 +502,7 @@ namespace HeroLeft.BattleLogic
                 }
                 else
                 {
-                    endvalue = fVal;
+                    endvalue = (int)fVal;
                 }
                 if (isProp)
                 {
@@ -496,11 +512,11 @@ namespace HeroLeft.BattleLogic
                 {
                     GetType().GetField(property).SetValue(this, endvalue);
                 }
-            }
-            catch (Exception e)
-            {
-                Debug.Log(e);
-            }
+          //  }
+         //   catch (Exception e)
+         //   {
+        //        Debug.Log(e);
+         //   }
         }
 
         public void Death(Logic killer)
@@ -559,6 +575,9 @@ namespace HeroLeft.BattleLogic
             ReloadStartPosition(transform.position);
             Stats = new statistic();
 
+            if (isHero)
+                EnergyAttackCost = BattleConstants.EnergyCost;
+
             unitImage = unitImg;
             hpSlider = HpSlider;
             UnitAction = unitObject.ActionsPerTurn;
@@ -572,6 +591,7 @@ namespace HeroLeft.BattleLogic
         {
             unitEvents = new EventAction();
             unitEvents.MyUnit = myUnit;
+            unitProperty = (UnitProperty)unitObject.unitProperty.Clone();
 
             //ItemCalcul
             if (unitObject.Items != null)
@@ -585,9 +605,14 @@ namespace HeroLeft.BattleLogic
                     {
                         unitEvents.OnAttack.AddListener(() => unitObject.Items[quate].ItemAction.OnAttack.Invoke());
                     }
+
+                    if(unitObject.Items[i].SlotType == ItemObject.slotType.weapon)
+                    {
+                        EnergyAttackCost = unitObject.Items[i].NeedEnergy;
+                    }
                 }
-                
-            unitProperty = (UnitProperty)unitObject.unitProperty.Clone();
+
+            damageType = unitProperty.damageType;
 
             for (int i = 0; i < unitObject.Spells.Length; i++)
             {
@@ -722,12 +747,17 @@ namespace HeroLeft.BattleLogic
             }
         }
 
+        public void ReloadDamageType()
+        {
+            damageType = unitProperty.damageType;
+        }
+
         public void ReloadStartPosition(Vector3 pos)
         {
             vc = pos;
         }
 
-        public void AttackUnit(Unit unit, float cost)
+        public void AttackUnit(Unit unit)
         {
             if (!CanAttack(unit) || transform == null) return;
             if (unit.unitlogic.unitProperty.Hp <= 0)
@@ -735,9 +765,9 @@ namespace HeroLeft.BattleLogic
                 return;
             }
 
-            if (transform.GetComponent<HeroLogic>())
+            if (isHero)
             {
-                transform.GetComponent<HeroLogic>().Energy -= cost;
+                transform.GetComponent<HeroLogic>().Energy -= EnergyAttackCost;
                 BattleLogic.battleLogic.addAction(() =>
                 {
 
@@ -747,7 +777,7 @@ namespace HeroLeft.BattleLogic
                     }
                     else
                     {
-                        transform.GetComponent<HeroLogic>().Energy += cost;
+                        transform.GetComponent<HeroLogic>().Energy += EnergyAttackCost;
                         momentalEnd = true;
                     }
                 }, HasNear);
@@ -773,7 +803,7 @@ namespace HeroLeft.BattleLogic
             {
                 BattleLogic.battleLogic.addAction(() =>
                 {
-                    UnitAction -= (int)cost;
+                    UnitAction -= (int)EnergyAttackCost;
                     if (!CanAttack(unit)) return;
                     if (unit.unitlogic.Hp > 0)
                     {
@@ -890,8 +920,8 @@ namespace HeroLeft.BattleLogic
             }
             else if (unit != null && BattleControll.battleControll.EnemyLines > 1)
             {
-                UnitLogic un = (transform.GetComponent<UnitLogic>()) ? transform.GetComponent<UnitLogic>() : unit.unitlogic.transform.GetComponent<UnitLogic>();
-                HeroLogic hr = (transform.GetComponent<HeroLogic>()) ? transform.GetComponent<HeroLogic>() : unit.unitlogic.transform.GetComponent<HeroLogic>();
+                UnitLogic un = (isHero) ? transform.GetComponent<UnitLogic>() : unit.unitlogic.transform.GetComponent<UnitLogic>();
+                HeroLogic hr = (isHero) ? transform.GetComponent<HeroLogic>() : unit.unitlogic.transform.GetComponent<HeroLogic>();
                 //   if (un.position.y == BattleControll.battleControll.EnemyLines - 1) return false;
                 if (un != null && hr != null)
                 {
@@ -957,30 +987,40 @@ namespace HeroLeft.BattleLogic
             pos = position - unit.position;
             return Math.Max(Math.Abs(pos * GameManager.MissChansePerPosition) + unitProperty.Evasion, 0);
         }
+
+        public bool isHero => transform.GetComponent<HeroLogic>();
     }
 
     public class statistic
     {
-        public float getPhysRoundDamage { get {
-                RoundDispose();
-                return phys_round_damage;
+        private int turn_now => TurnController.turnController.TurnNumber;
+        public float turn_damage_mult {
+            get {
+                if(turn_lastHit != turn_now)
+                {
+                    turn_lastHit = turn_now;
+                    return 0.5f;
+                }
+                return 1; 
             }
         }
+        public float last_phys_hit = 0;
 
         private float phys_round_damage = 0;
         private int turn_lastHit = 0;
 
         private void RoundDispose()
         {
-            if (TurnController.turnController.TurnNumber == turn_lastHit) return;
+            if (turn_now == turn_lastHit) return;
 
             phys_round_damage = 0;
 
-            turn_lastHit = TurnController.turnController.TurnNumber;
+            turn_lastHit = turn_now;
         }
 
         public void AddDamage(float damage)
         {
+            last_phys_hit = damage;
             phys_round_damage += damage;
         }
     }
