@@ -61,7 +61,6 @@ namespace HeroLeft.BattleLogic
             Helper.lstDamagedEnemy = this;
             float damage = 0;
             bool[] Avoided = new bool[Resources.Load<Transform>(GameManager.DamageIndicator[unitLogic.attackType != null ? unitLogic.attackType.damageIndicator : 0]).GetComponentsInChildren<Text>().Length];
-            if (unitLogic.damageType == DamageType.Phys) Debug.LogError("dd");
 
             if (property != null && property.Length > 0)
             {
@@ -89,7 +88,7 @@ namespace HeroLeft.BattleLogic
 
                             damage /= Avoided.Length;
                             damage -= unitProperty.DamageResist;
-                            if (unitProperty.Armor != 0)
+                            if (unitProperty.Armor != 0 && unitLogic.damageType == DamageType.Phys)
                             {
                                 BattleConstants.CalculateArmor(ref damage, unitProperty.Armor);
                             }
@@ -408,6 +407,8 @@ namespace HeroLeft.BattleLogic
                         if (eff.refreshFunction)
                             eff.EffectFunction();
                         ChangeValue(eff.ImpactValue, eff.spellType);
+
+                        if(eff.Duration != 0)
                         unitEffects.Add(eff);
                     }
                     if (InstantAction) { eff.Duration++; eff.Execute((Unit)MyLogic); }

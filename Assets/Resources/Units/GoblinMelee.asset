@@ -30,6 +30,7 @@ MonoBehaviour:
       value: 0
     Damage:
       value: 5
+    damageType: 0
     DamageResist:
       value: 0
     MagicResist:
@@ -53,7 +54,7 @@ MonoBehaviour:
     CriticalDamage:
       value: 0
     Armor:
-      value: 0
+      value: 90
     BlockDamage:
       value: 0
     Evasion:

@@ -23,8 +23,8 @@ MonoBehaviour:
     size: {x: 0, y: 0}
   passiveSettings:
     IsPassiveSkill: 1
-    HaveChanse: 0
-    chanse: 100
+    HaveChanse: 1
+    chanse: 50
   ManaCost: 0
   EnergyCost: 0
   ReloadTurns: 0
@@ -40,7 +40,7 @@ MonoBehaviour:
     VisualEffect: {fileID: 0}
     Duration: 0
     ImpactValue:
-      value: 0
+      value: 2
       isProcent: 0
     MaxImpact: 0
     ActionCall: 0
@@ -59,24 +59,24 @@ MonoBehaviour:
     target: 0
     BattleCry:
       m_PersistentCalls:
-        m_Calls: []
-    OnGetDamage:
-      m_PersistentCalls:
-        m_Calls: []
-    OnAttack:
-      m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 11400000}
-          m_MethodName: SpellExecute
-          m_Mode: 5
+          m_MethodName: RepairDamageType
+          m_Mode: 3
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 5
             m_FloatArgument: 0
-            m_StringArgument: 5;-2
+            m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+    OnGetDamage:
+      m_PersistentCalls:
+        m_Calls: []
+    OnAttack:
+      m_PersistentCalls:
+        m_Calls: []
     AfterDead:
       m_PersistentCalls:
         m_Calls: []

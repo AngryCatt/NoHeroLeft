@@ -151,7 +151,6 @@ namespace HeroLeft.BattleLogic {
                         if (targs[i] != null)
                         {
                             Effect[] efs = (effectImpose) ? effects : null;
-                            Debug.LogError("YY");
                             targs[i].unitlogic.TakeImpact(ImpactValue, this, efs, spellType, effectZeroDuration, InstantAction);
                         }
                     }
