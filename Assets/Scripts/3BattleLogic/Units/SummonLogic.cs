@@ -18,6 +18,8 @@ namespace HeroLeft.BattleLogic
                 spell.Execute(null, null);
 
                 Duration--;
+                if (Duration <= 0)
+                    Destroy(gameObject);
             }
         }
 

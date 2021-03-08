@@ -48,6 +48,7 @@ namespace HeroLeft.BattleLogic {
 
                 if(enamy.unitlogic.attackType != null)
                 {
+                    enamy.unitlogic.attackType.Reload();
                     SpellPart sp = enamy.unitlogic.attackType.AvailableSpell;
                     if (sp.Available(enamy.unitlogic.attackType))
                     {
@@ -76,6 +77,7 @@ namespace HeroLeft.BattleLogic {
                         {
                             enamy.unitlogic.UnitAction -= sp.spell.EnergyCost;
                             act -= sp.spell.EnergyCost;
+                            sp.GoReload();
                         }
                     }
                 }

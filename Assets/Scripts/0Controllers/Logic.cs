@@ -52,6 +52,7 @@ namespace HeroLeft.BattleLogic
         }
 
         public float Damage { get { return unitProperty.Damage; } set { unitProperty.Damage = value; } }
+        public float Armor { get { return unitProperty.Armor; } set { unitProperty.Armor = value; } }
 
         public int UnitAction;
 
@@ -108,7 +109,7 @@ namespace HeroLeft.BattleLogic
                             {
                                 damage /= 2;
                                 if (!unitLogic.unitObject.IsRangeUnit)
-                                    unitLogic.TakeImpact(new Impact { value = damage / 1.5f }, this, "Hp");
+                                    unitLogic.TakeImpact(new Impact { value = this.Damage / 1.5f }, this, "Hp");
                             }
 
                             if (damage < 0) damage = 0;
@@ -139,7 +140,7 @@ namespace HeroLeft.BattleLogic
                 Transform indicator = (des != null) ? des.transform : null;
 
                 Transform loadedIndicator = Resources.Load<Transform>(damage >= 0 ? (GameManager.DamageIndicator[unitLogic.attackType != null ? unitLogic.attackType.damageIndicator : 0]) : GameManager.HealIndicator);
-                if (des != null && des.name.StartsWith(loadedIndicator.name) && des.lifeTime > 0.2f)
+                if (des != null && des.name.StartsWith(loadedIndicator.name))
                 {
                     indicator.GetComponent<Animation>().Stop();
                     indicator.GetComponent<Animation>().Play(des.stop.name);
@@ -277,10 +278,11 @@ namespace HeroLeft.BattleLogic
                 Transform indicator = (des != null) ? des.transform : null;
 
                 Transform loadedIndicator = Resources.Load<Transform>(damage >= 0 ? (GameManager.DamageIndicator[0]) : GameManager.HealIndicator);
-                if (des != null && des.name.StartsWith(loadedIndicator.name) && des.lifeTime > 0.2f)
+                if (des != null && des.name.StartsWith(loadedIndicator.name))
                 {
-                    indicator.GetComponent<Animation>().Stop();
-                    indicator.GetComponent<Animation>().Play(des.stop.name);
+
+                    indicator.GetComponent<Animation>().Rewind(des.stop.name);
+                   // indicator.GetComponent<Animation>().Play();
                 }
                 else
                 {
@@ -428,8 +430,8 @@ namespace HeroLeft.BattleLogic
         {
             if (property == "Hp" || property.Length == 0) return;
 
-           // try
-          //  {
+            try
+            {
 
                 bool isProp = false;
                 bool haveMin = false;
@@ -513,15 +515,19 @@ namespace HeroLeft.BattleLogic
                 {
                     GetType().GetField(property).SetValue(this, endvalue);
                 }
-          //  }
-         //   catch (Exception e)
-         //   {
-        //        Debug.Log(e);
-         //   }
+            }
+            catch (Exception e)
+            {
+                Debug.Log(e);
+            }
         }
 
+
+        bool destroed = false;
         public void Death(Logic killer)
         {
+            if (destroed) return;
+            destroed = true;
             //DeathProcces
             if (killer != null)
                 Helper.lstKiller = killer;
@@ -582,7 +588,7 @@ namespace HeroLeft.BattleLogic
             unitImage = unitImg;
             hpSlider = HpSlider;
             UnitAction = unitObject.ActionsPerTurn;
-            attackType = unitObject.attackType;
+            attackType = this.unitObject.attackType;
             if (attackType != null)
                 attackType.ApplyUnit(myUnit);
             Init();
@@ -772,7 +778,7 @@ namespace HeroLeft.BattleLogic
                 BattleLogic.battleLogic.addAction(() =>
                 {
 
-                    if (unit.unitlogic.Hp > 0 && !unit.unitlogic.HasBlocked(myUnit))
+                    if (unit.unitlogic.Hp > 0 && !unit.unitlogic.HasBlocked(myUnit) && unit.unitlogic.transform != null)
                     {
                         SetPos(unit.unitlogic.transform.position);
                     }
@@ -784,7 +790,7 @@ namespace HeroLeft.BattleLogic
                 }, HasNear);
                 BattleLogic.battleLogic.addAction(() =>
                 {
-                    if (unit.unitlogic.Hp > 0 && !unit.unitlogic.HasBlocked(myUnit))
+                    if (unit.unitlogic.Hp > 0 && !unit.unitlogic.HasBlocked(myUnit) && unit.unitlogic.transform != null)
                     {
                         Helper.lstOffender = this;
                         Helper.lstTargetEnemy = unit.unitlogic;
@@ -898,7 +904,7 @@ namespace HeroLeft.BattleLogic
 
         public bool HasBlocked(Unit unit = null)
         {
-            if (unit != null && unit.unitObject.IsRangeUnit) return false;
+            if (unit != null && unit.unitObject.IsRangeUnit || transform == null) return false;
             UnitLogic unitLogic = transform.GetComponent<UnitLogic>();
             if (unitLogic != null && BattleControll.battleControll.EnemyLines > 1 && unitLogic.position.y == BattleControll.battleControll.EnemyLines - 1)
             {
@@ -921,8 +927,9 @@ namespace HeroLeft.BattleLogic
             }
             else if (unit != null && BattleControll.battleControll.EnemyLines > 1)
             {
-                UnitLogic un = (isHero) ? transform.GetComponent<UnitLogic>() : unit.unitlogic.transform.GetComponent<UnitLogic>();
+                UnitLogic un = (!isHero) ? transform.GetComponent<UnitLogic>() : unit.unitlogic.transform.GetComponent<UnitLogic>();
                 HeroLogic hr = (isHero) ? transform.GetComponent<HeroLogic>() : unit.unitlogic.transform.GetComponent<HeroLogic>();
+
                 //   if (un.position.y == BattleControll.battleControll.EnemyLines - 1) return false;
                 if (un != null && hr != null)
                 {
@@ -979,7 +986,13 @@ namespace HeroLeft.BattleLogic
                         return true;
                 return false;
             }
-            return true;
+            else
+            {
+                lg = unit.unitlogic.transform.GetComponent<UnitLogic>();
+                    if (lg.position.y > 0 || unitObject.IsRangeUnit || !unit.unitlogic.HasBlocked(myUnit))
+                        return true;
+                return false;
+            }
         }
 
         public float MissChanse(Logic unit)

@@ -54,7 +54,7 @@ MonoBehaviour:
     CriticalDamage:
       value: 0
     Armor:
-      value: 90
+      value: 0
     BlockDamage:
       value: 0
     Evasion:

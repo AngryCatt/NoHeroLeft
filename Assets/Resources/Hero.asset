@@ -16,16 +16,17 @@ MonoBehaviour:
   IsHero: 1
   Avatar:
     img: {fileID: 21300000, guid: fe414ae7d70a54244a2c862fbcc8ef55, type: 3}
+    Container: {fileID: 0}
     pos: {x: 0, y: 0}
     size: {x: 1, y: 1}
   MirrorImage: 0
   unitProperty:
     Hp:
-      value: 600
+      value: 500
     Energy:
       value: 100
     Mana:
-      value: 80
+      value: 100
     HpRegen:
       value: 0
     Damage:
@@ -74,17 +75,17 @@ MonoBehaviour:
     FieldSpellDamage:
       value: 0
   Spells:
-  - {fileID: 11400000, guid: 1c8e91a94b0f96b45b0989d1eea8fed3, type: 2}
   - {fileID: 11400000, guid: ad6dcfac7820d1a41b6295900fdc9f0c, type: 2}
   - {fileID: 11400000, guid: fe5f2f3cbed9aad429b86fdc725ff9d7, type: 2}
-  Items:
-  - {fileID: 11400000, guid: 3e2cf67697f0459408ca537e5218a85b, type: 2}
+  - {fileID: 11400000, guid: fc7ac2d0207bead43a60f847536c2a7c, type: 2}
+  Items: []
   ActionsPerTurn: 1
   FirstLinePriority: 0
   IsRangeUnit: 0
   attackType: {fileID: 0}
   ico:
     img: {fileID: 21300000, guid: 873c1b3350bcd9f4a98cd5eba18c2779, type: 3}
+    Container: {fileID: 0}
     pos: {x: 0, y: 0}
     size: {x: 0, y: 0}
   unitActions:

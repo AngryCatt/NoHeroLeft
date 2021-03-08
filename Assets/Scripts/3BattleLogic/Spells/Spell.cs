@@ -437,9 +437,10 @@ namespace HeroLeft.BattleLogic {
 
         public void EffectDispell(string effect)
         {
+            string[] cmd = effect.Split(';');
+            int queue = (cmd.Length > 2) ? int.Parse(cmd[2]) : 0;
             BattleLogic.battleLogic.addAction(() =>
             {
-                string[] cmd = effect.Split(';');
                 int tg = int.Parse(cmd[0]);
                 Logic log = Helper.getTarget(tg);
 
@@ -447,11 +448,12 @@ namespace HeroLeft.BattleLogic {
                 {
                     if (log.unitEffects[i].Name == cmd[1])
                     {
+                        log.unitEffects[i].Dispelling(log.myUnit);
                         log.unitEffects.RemoveAt(i);
                         break;
                     }
                 }
-            },null, 0, 0f);
+            },null, queue, 0f);
         }
 
         public void RepairDamageType(int targ)

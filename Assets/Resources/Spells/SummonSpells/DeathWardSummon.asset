@@ -19,6 +19,7 @@ MonoBehaviour:
     isProcent: 0
   uImage:
     img: {fileID: 0}
+    Container: {fileID: 0}
     pos: {x: 0, y: 0}
     size: {x: 0, y: 0}
   passiveSettings:
@@ -26,8 +27,8 @@ MonoBehaviour:
     HaveChanse: 0
     chanse: 0
   ManaCost: 0
-  EnergyCost: 0
-  ReloadTurns: 5
+  EnergyCost: 1
+  ReloadTurns: 1000
   InstantAction: 0
   Perk: 0
   spellClass: 0

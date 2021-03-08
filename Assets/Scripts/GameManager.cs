@@ -12,6 +12,7 @@ namespace HeroLeft
     {
         public static string SelectedLanguage = "Russian";
         public const string HeroObjectPath = "Hero";
+        public const string HeroTrainingObjectPath = "HeroTraining";
 
         public static readonly string[] DamageIndicator = new string[] {
             "Prefabs/DamageIndicator",
@@ -27,7 +28,9 @@ namespace HeroLeft
         public const float AttackReactionDistance = 200f;
 
         public static string UserName;
-        public static SafeInt Money = 100;
+        public static SafeInt Gold = 1;
+        public static SafeInt Silver = 10;
+        public static SafeInt Copper = 100;
         public static string PlayFabID;
 
         public static float DeltaXScreen { get { return 1280f / Screen.width; } }
@@ -52,7 +55,9 @@ namespace HeroLeft
             PlayFabClientAPI.UpdateUserData(new UpdateUserDataRequest()
             {
                 Data = new Dictionary<string, string>() {
-                {"Money", Money.ToString()},
+                {"Gold", Gold.ToString()},
+                {"Silver", Silver.ToString()},
+                {"Copper", Copper.ToString()},
         },
                 Permission = UserDataPermission.Private,
             },
@@ -74,8 +79,9 @@ namespace HeroLeft
                 Debug.Log("Got user data");
 
                 GetVal(result, "Name", ref UserName);
-                GetVal(result, "Money", ref Money);
-
+                GetVal(result, "Gold", ref Gold);
+                GetVal(result, "Silver", ref Silver);
+                GetVal(result, "Copper", ref Copper);
             }, (error) =>
             {
                 Debug.Log("Got error retrieving user data:");

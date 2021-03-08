@@ -23,6 +23,7 @@ namespace HeroLeft.BattleLogic {
         private IEnumerator StartTimer() {
             if (BattleLogic.battleLogic.turnPosition != TurnPosition.MyTurn) yield break;
 
+            if (TurnSeconds == -1) yield break;
             int sec = TurnSeconds;
 
             while (sec != 0) {

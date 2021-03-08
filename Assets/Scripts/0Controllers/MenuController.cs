@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 namespace HeroLeft {
     public class MenuController : MonoBehaviour {
         public int LoadedPage = 0;
+        public LevelObject Training;
 
         [Header("Pages")]
         public _MenuList MenuList;
@@ -14,6 +15,7 @@ namespace HeroLeft {
 
         [Header("Levels")]
         public string GameLevel;
+        public string TrainingLevel;
 
         public static MenuController menuController;
 
@@ -28,6 +30,13 @@ namespace HeroLeft {
         public void LoadLevel(LevelObject level) {
             BattleControll.loadedLevel = level;
             SceneManager.LoadScene(GameLevel);
+        }
+
+        [ContextMenu("StartTraining")]
+        public void StartTraining()
+        {
+            BattleControll.loadedLevel = Training;
+            SceneManager.LoadScene(TrainingLevel);
         }
 
         public void LoadPage(int pageNumber) {

@@ -17,7 +17,6 @@ namespace HeroLeft.BattleLogic {
         private HeroLogic myhero;
         private int MaxPos = 3;
         private Vector3 startPos;
-        private GameObject lastMark;
 
         public static HeroDrag heroDrag;
 
@@ -34,12 +33,17 @@ namespace HeroLeft.BattleLogic {
         public void OnDrag(PointerEventData eventData)
         {
             if (BattleLogic.battleLogic.turnPosition != TurnPosition.MyTurn)
+            {
                 MarkParent.gameObject.SetActive(false);
+            }
         }
 
         public void OnEndDrag(PointerEventData eventData)
         {
-            if (myhero.Energy < EnergyCost) return;
+            if (myhero.Energy < EnergyCost) {
+                MarkParent.gameObject.SetActive(false);
+                return; 
+            }
             if (BattleLogic.battleLogic.turnPosition == TurnPosition.MyTurn)
             {
 
@@ -73,12 +77,12 @@ namespace HeroLeft.BattleLogic {
 
         private void Start()
         {
-            Init();
+            Init(BattleControll.loadedLevel.EnemyRows - 1);
         }
 
-        public void Init()
+        public void Init(int MaxPos)
         {
-            MaxPos = BattleControll.loadedLevel.EnemyRows - 1;
+            this.MaxPos = MaxPos;
             for (int i = 0; i < MaxPos * 2; i++)
             {
                 Instantiate(MarkPrefab, MarkParent);

@@ -22,6 +22,8 @@ namespace HeroLeft.Auth {
 
         public ErrorText errorText;
 
+        bool registered = false;
+
         public static string EncryptPass(string pass) {
             MD5CryptoServiceProvider provider = new MD5CryptoServiceProvider();
 
@@ -58,6 +60,8 @@ namespace HeroLeft.Auth {
 
         private void RegisterSuccess(RegisterPlayFabUserResult result) {
             Debug.Log("Register success!");
+            registered = true;
+
             GameManager.SetUserData();
             Login();
         }
@@ -82,6 +86,8 @@ namespace HeroLeft.Auth {
             Debug.Log("Login success!");
             AuthController.FileReWrite(lgEmailField.text, lgPassField.text, (System.DateTime)result.LastLoginTime, result.PlayFabId);
             gameObject.SetActive(false);
+            if(registered)
+                MenuController.menuController.StartTraining();
         }
 
         private void LoginFailure(PlayFabError error) {

@@ -113,6 +113,8 @@ namespace HeroLeft.BattleLogic
             UnitLogic enemy = Instantiate<UnitLogic>(enemyPrefab, enemyQueue);
             enemy.unitObject = unitObject;
             enemy.transform.GetChild(0).position = new Vector3(Screen.width + enemy.GetComponent<RectTransform>().sizeDelta.x * 2, enemy.transform.position.y, 0);
+            if (unitObject.Avatar.Container != null)
+                enemy.transform.GetChild(0).GetChild(1).GetComponent<Image>().sprite = unitObject.Avatar.Container;
             enemy.gameObject.SetActive(false);
             enemy.ReloadNameTag();
             enemy.InitLogic();
@@ -123,6 +125,7 @@ namespace HeroLeft.BattleLogic
         public void Summon(UnitObject unitObject)
         {
             UnitLogic unit = SpawnPerson(unitObject);
+            unit.transform.SetParent(enemyUnitsParent.transform);
             unit.gameObject.SetActive(true);
             enemyUnitsParent.NewChilder(unit);
             unit.unitlogic.unitImage.GetComponent<ImageMove>().Setup();
@@ -198,27 +201,28 @@ namespace HeroLeft.BattleLogic
         public void HeroEffectsRefresh()
         {
             int effs = heroLogic.unitlogic.unitEffects.Count;
-             
+
             if (effs < hrEffects.childCount)
             {
-                for(int i = hrEffects.childCount; i < effs; i--)
+                for (int i = hrEffects.childCount; i < effs; i--)
                 {
                     Destroy(hrEffects.GetChild(i - 1).gameObject);
                 }
-            }else if(effs > hrEffects.childCount)
+            }
+            else if (effs > hrEffects.childCount)
             {
-                for(int i = hrEffects.childCount; i < effs; i++)
+                for (int i = hrEffects.childCount; i < effs; i++)
                 {
                     Instantiate(effectPrefab, hrEffects);
                 }
             }
 
-            for(int i = 0; i < effs; i++)
+            for (int i = 0; i < effs; i++)
             {
                 Effect ef = heroLogic.unitlogic.unitEffects[i];
                 Transform obj = hrEffects.GetChild(i);
 
-                if(ef.Duration <= 0)
+                if (ef.Duration <= 0)
                 {
                     Destroy(hrEffects.GetChild(i).gameObject);
                     continue;

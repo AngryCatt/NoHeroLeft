@@ -77,6 +77,7 @@ namespace HeroLeft.BattleLogic {
     [Serializable]
     public class UImage {
         public Sprite img;
+        public Sprite Container;
         public Vector2 pos;
         public Vector2 size;
     }

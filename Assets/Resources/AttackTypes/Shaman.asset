@@ -21,7 +21,7 @@ MonoBehaviour:
   - needPoints: 0
     spell: {fileID: 11400000, guid: 5d78f26c787fbe342b5a65cd8975b624, type: 2}
     pointType: 0
-  - needPoints: 2
+  - needPoints: 1
     spell: {fileID: 11400000, guid: 6fe77601e0b35f14983676a672741aba, type: 2}
     pointType: 0
   part: 0
@@ -29,18 +29,62 @@ MonoBehaviour:
     unitProperty:
       Hp:
         value: 0
+      Energy:
+        value: 0
+      Mana:
+        value: 0
       HpRegen:
         value: 0
       Damage:
         value: 0
+      damageType: 0
       DamageResist:
         value: 0
-      Armor: 0
+      MagicResist:
+        value: 0
+      PureResist:
+        value: 0
+      FireResist:
+        value: 0
+      IceResist:
+        value: 0
+      NatureResist:
+        value: 0
+      DarkResist:
+        value: 0
+      BloodResist:
+        value: 0
+      LightResist:
+        value: 0
+      PoisonResist:
+        value: 0
+      CriticalDamage:
+        value: 0
+      Armor:
+        value: 0
+      BlockDamage:
+        value: 0
       Evasion:
+        value: 0
+      AttackCritChanse:
+        value: 0
+      MagicCritChanse:
+        value: 0
+      AbsoluteBlockChanse:
+        value: 0
+      BlockChanse:
+        value: 0
+      ParryChanse:
+        value: 0
+      DirectSpellDamage:
+        value: 0
+      FieldSpellDamage:
         value: 0
     hpSlider: {fileID: 0}
     unitEffects: []
     attackType: {fileID: 0}
+    totem: {fileID: 0}
+    damageType: 0
     unitEvents:
       target: 0
       BattleCry:

@@ -1,0 +1,84 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ec7376fefde62b47bfe2736c5f8c8d2, type: 3}
+  m_Name: 1SingleHandCrushingSpell
+  m_EditorClassIdentifier: 
+  SpellName: SingleHandCrushing_effect
+  HeroSpell: 0
+  ImpactValue:
+    value: 0
+    isProcent: 0
+  uImage:
+    img: {fileID: 0}
+    pos: {x: 0, y: 0}
+    size: {x: 0, y: 0}
+  passiveSettings:
+    IsPassiveSkill: 1
+    HaveChanse: 1
+    chanse: 20
+  ManaCost: 0
+  EnergyCost: 0
+  ReloadTurns: 0
+  InstantAction: 1
+  Perk: 0
+  spellClass: 0
+  spellTarget: -1
+  spellType: 
+  effects:
+  - Name: armor breach
+    Function: 
+    refreshFunction: 0
+    VisualEffect: {fileID: 0}
+    Duration: 0
+    ImpactValue:
+      value: 2
+      isProcent: 0
+    MaxImpact: 0
+    ActionCall: 0
+    effectStacking: 0
+    stacks: 0
+    spellType: damageType=
+    spellTarget: -1
+    splashType: 0
+    spell: {fileID: 0}
+  splashType: 0
+  Targets: 1
+  DamageDecrase: 100
+  DummyUnit: {fileID: 0}
+  CallEveryTurn: 0
+  unitEvents:
+    target: 0
+    BattleCry:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 11400000}
+          m_MethodName: RepairDamageType
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 5
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    OnGetDamage:
+      m_PersistentCalls:
+        m_Calls: []
+    OnAttack:
+      m_PersistentCalls:
+        m_Calls: []
+    AfterDead:
+      m_PersistentCalls:
+        m_Calls: []
+  effectImage: {fileID: 0}
+  linkedUnits: []

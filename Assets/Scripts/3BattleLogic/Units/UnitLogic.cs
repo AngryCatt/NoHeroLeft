@@ -13,7 +13,7 @@ namespace HeroLeft.BattleLogic
         public Logic unitlogic { get { return logic; } set { logic = value; } }
         public bool Alien { get; set; }
 
-        private Transform ChildImage;
+        public Transform ChildImage;
         private GameObject SelectCircle;
         private Text nameTag;
 
@@ -112,7 +112,7 @@ namespace HeroLeft.BattleLogic
 
         public void Select()
         {
-            if (BattleLogic.battleLogic.selectedTarget == this)
+            if ((Object)BattleLogic.battleLogic.selectedTarget == this)
             {
                 ActToTarget();
             }
@@ -129,7 +129,7 @@ namespace HeroLeft.BattleLogic
 
         public void ActToTarget()
         {
-            BattleLogic.battleLogic.RealizeAction(this);
+            BattleLogic.battleLogic.RealizeAction(this,false);
         }
 
         public void OnDeselect()

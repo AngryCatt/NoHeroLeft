@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 namespace HeroLeft.BattleLogic {
     public class HeroLogic : MonoBehaviour, Unit, Selected {
@@ -25,7 +26,7 @@ namespace HeroLeft.BattleLogic {
 
         private void Awake()
         {
-            unitObject = Resources.Load<UnitObject>(GameManager.HeroObjectPath);
+            unitObject = Resources.Load<UnitObject>(SceneManager.GetActiveScene().buildIndex == 2 ? GameManager.HeroObjectPath : GameManager.HeroTrainingObjectPath);
             Alien = true;
             if (Alien) BattleControll.heroLogic = this;
         }
@@ -43,7 +44,7 @@ namespace HeroLeft.BattleLogic {
 
         private void NextTurnRepose()
         {
-            if (this == null) return;
+            if (this == null || SceneManager.GetActiveScene().buildIndex != 2) return;
             Energy = Mathf.Clamp(Energy + 50, 0, EnergySlider.maxValue);
             Mana = Mathf.Clamp(Mana + 50, 0, ManaSlider.maxValue);
             logic.Hp = Mathf.Clamp(logic.Hp + 5, 0, HpSlider.maxValue);

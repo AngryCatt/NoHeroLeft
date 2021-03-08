@@ -1,0 +1,101 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ed2cb51423341d42b9948d32e4ecbd3, type: 3}
+  m_Name: Raimond
+  m_EditorClassIdentifier: 
+  UnitName: Raimond
+  IsHero: 0
+  Avatar:
+    img: {fileID: 21300000, guid: 866dcad5cf76ba44384e1816a23d16c7, type: 3}
+    Container: {fileID: 21300000, guid: 539224e06cd89264e9c6a12cc57e3808, type: 3}
+    pos: {x: 0, y: 0}
+    size: {x: 125, y: 165}
+  MirrorImage: 0
+  unitProperty:
+    Hp:
+      value: 500
+    Energy:
+      value: 0
+    Mana:
+      value: 0
+    HpRegen:
+      value: 0
+    Damage:
+      value: 0
+    damageType: 0
+    DamageResist:
+      value: 0
+    MagicResist:
+      value: 0
+    PureResist:
+      value: 0
+    FireResist:
+      value: 0
+    IceResist:
+      value: 0
+    NatureResist:
+      value: 0
+    DarkResist:
+      value: 0
+    BloodResist:
+      value: 0
+    LightResist:
+      value: 0
+    PoisonResist:
+      value: 0
+    CriticalDamage:
+      value: 0
+    Armor:
+      value: 0
+    BlockDamage:
+      value: 0
+    Evasion:
+      value: 100
+    AttackCritChanse:
+      value: 0
+    MagicCritChanse:
+      value: 0
+    AbsoluteBlockChanse:
+      value: 0
+    BlockChanse:
+      value: 0
+    ParryChanse:
+      value: 0
+    DirectSpellDamage:
+      value: 0
+    FieldSpellDamage:
+      value: 0
+  Spells: []
+  Items: []
+  ActionsPerTurn: 0
+  FirstLinePriority: 0
+  IsRangeUnit: 0
+  attackType: {fileID: 0}
+  ico:
+    img: {fileID: 0}
+    Container: {fileID: 0}
+    pos: {x: 0, y: 0}
+    size: {x: 0, y: 0}
+  unitActions:
+    target: 0
+    BattleCry:
+      m_PersistentCalls:
+        m_Calls: []
+    OnGetDamage:
+      m_PersistentCalls:
+        m_Calls: []
+    OnAttack:
+      m_PersistentCalls:
+        m_Calls: []
+    AfterDead:
+      m_PersistentCalls:
+        m_Calls: []

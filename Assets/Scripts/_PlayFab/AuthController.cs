@@ -111,7 +111,6 @@ namespace HeroLeft.Auth {
         private void LoginSuccess(LoginResult result) {
             try {
                 Debug.Log("Login success!");
-
                 DateTime startTime = (DateTime)result.LastLoginTime;
                 FileReWrite(Email, Password, startTime, result.PlayFabId);
             } catch(Exception e) {

@@ -22,6 +22,15 @@ namespace HeroLeft.Interfaces {
         private void OnEnable()
         {
             GetComponent<Image>().sprite = inActive;
+
+            if(BattleControll.heroLogic.transform.position.x < transform.position.x)
+            {
+                transform.localScale = new Vector3(-1,1,1);
+            }
+            else
+            {
+                transform.localScale = Vector3.one;
+            }
         }
     }
 }

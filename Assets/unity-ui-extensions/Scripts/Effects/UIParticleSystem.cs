@@ -22,7 +22,7 @@ namespace UnityEngine.UI.Extensions
         private int textureSheetAnimationFrames;
         private Vector2 textureSheetAnimationFrameSize;
         private ParticleSystemRenderer pRenderer;
-
+        public Color colored = Color.white;
         private Material currentMaterial;
 
         private Texture currentTexture;
@@ -161,7 +161,7 @@ namespace UnityEngine.UI.Extensions
 #endif
                 float rotation = -particle.rotation * Mathf.Deg2Rad;
                 float rotation90 = rotation + Mathf.PI / 2;
-                Color32 color = particle.GetCurrentColor(pSystem);
+                Color32 color = particle.GetCurrentColor(pSystem) * colored;
                 float size = particle.GetCurrentSize(pSystem) * 0.5f;
 
                 // apply scale
@@ -203,7 +203,7 @@ namespace UnityEngine.UI.Extensions
                     {
 
                         case ParticleSystemAnimationType.WholeSheet:
-                            frame = Mathf.FloorToInt(frameProgress * textureSheetAnimationFrames);
+                            frame = Mathf.FloorToInt(frameProgress * textureSheetAnimationFrames) ;
                             break;
 
                         case ParticleSystemAnimationType.SingleRow:
@@ -217,7 +217,6 @@ namespace UnityEngine.UI.Extensions
                             break;
 
                     }
-
                     frame %= textureSheetAnimationFrames;
                     float particleWidth = 1f / textureSheetAnimation.numTilesX;
                     float particleHight = 1f / textureSheetAnimation.numTilesY;

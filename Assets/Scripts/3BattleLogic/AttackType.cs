@@ -53,6 +53,14 @@ namespace HeroLeft.BattleLogic
             };
         }
 
+        public void Reload()
+        {
+            foreach(SpellPart sp in spellParts)
+            {
+                sp.Reload();
+            }
+        }
+
         public void ApplyUnit(Unit unit)
         {
             if(AttackPerk != null)
@@ -74,13 +82,14 @@ namespace HeroLeft.BattleLogic
     public class SpellPart : ICloneable
     {
         public int needPoints;
+        public int reload = 0;
         public Spell spell;
         public pointTypes pointType;
 
         public bool Available(AttackType attackType)
         {
             Logic logic = attackType.OnHero ? BattleControll.heroLogic.unitlogic : attackType.target;
-            if (logic != null)
+            if (logic != null && reload == 0)
             {
 
                 switch (pointType)
@@ -100,6 +109,17 @@ namespace HeroLeft.BattleLogic
             return false;
         }
 
+        public void Reload()
+        {
+            if(reload > 0)
+            reload--;
+        }
+
+        public void GoReload()
+        {
+            reload = spell.ReloadTurns;
+        }
+
         public enum pointTypes
         {
             points,
@@ -112,6 +132,7 @@ namespace HeroLeft.BattleLogic
             {
                 needPoints = needPoints,
                 pointType = pointType,
+                reload = reload,
                 spell = (Spell)spell.Clone(),
             };
         }

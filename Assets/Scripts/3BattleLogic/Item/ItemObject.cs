@@ -16,7 +16,6 @@ namespace HeroLeft.BattleLogic {
         [Header("Visual")]
         public UImage image;
 
-
         public enum slotType
         {
             weapon,
