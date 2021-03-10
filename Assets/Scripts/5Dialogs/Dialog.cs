@@ -56,6 +56,7 @@ namespace HeroLeft.Dialog
                 ButtonText.text = availPhrase.buttonText;
                 if (availPhrase.panelActive != -1)
                 {
+
                     if (availPhrase.type == 0)
                         panels[activedPn].SetActive(false);
                     if (activedPn != availPhrase.panelActive)
@@ -74,6 +75,10 @@ namespace HeroLeft.Dialog
                 {
                     ReloadPhrase();
                 }
+            }
+            else
+            {
+                UnityEngine.SceneManagement.SceneManager.LoadScene(1);
             }
         }
 
@@ -96,6 +101,8 @@ namespace HeroLeft.Dialog
 
         void Start()
         {
+            if (panels.Length > 0)
+                panels[0].SetActive(true);
             if (startWriting)
                 ReloadPhrase();
         }

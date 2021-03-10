@@ -10,6 +10,8 @@ namespace HeroLeft.Auth {
 
     public class AuthController : MonoBehaviour {
 
+        public bool EnterWithOutCheck = false;
+
         public static bool HaveAuthorized = false;
         public static bool HaveInternetConnection = false;
 
@@ -26,7 +28,7 @@ namespace HeroLeft.Auth {
             InternetErrorPanel.SetActive(false);
             HaveAuthorized = CheckInfoFile();
 
-            if (CheckServer("www.google.com")) {
+            if (CheckServer("www.google.com") || EnterWithOutCheck) {
                 HaveInternetConnection = true;
             }
 
@@ -40,6 +42,12 @@ namespace HeroLeft.Auth {
                 UnityEngine.SceneManagement.SceneManager.LoadScene(MenuSceanName);
             }
 
+        }
+
+        public void RightEnter()
+        {
+            EnterWithOutCheck = true;
+            Start();
         }
 
         public bool CheckInfoFile() {

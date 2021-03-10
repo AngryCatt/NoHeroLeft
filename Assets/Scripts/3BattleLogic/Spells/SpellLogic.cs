@@ -77,6 +77,7 @@ namespace HeroLeft.BattleLogic {
             if (BattleControll.heroLogic.Energy >= spellImage.EnergyCost && BattleControll.heroLogic.Mana >= spellImage.ManaCost)
             {
                 spellInBattle.Realizeto(BattleControll.heroLogic,unit);
+                OnDeselect();
             }
         }
 
@@ -124,7 +125,7 @@ namespace HeroLeft.BattleLogic {
 
         public bool CanBeUsed()
         {
-            return BattleLogic.battleLogic.turnPosition == TurnPosition.MyTurn && BattleControll.heroLogic.Energy >= spellImage.EnergyCost && BattleControll.heroLogic.Mana >= spellImage.ManaCost;
+            return BattleLogic.battleLogic.turnPosition == TurnPosition.MyTurn && BattleControll.heroLogic.Energy >= spellImage.EnergyCost && BattleControll.heroLogic.Mana >= spellImage.ManaCost && spellInBattle.RestTurn <= 0;
         }
     }
 
