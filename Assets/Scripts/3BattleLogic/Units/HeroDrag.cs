@@ -62,7 +62,7 @@ namespace HeroLeft.BattleLogic {
             BattleLogic.battleLogic.addAction(() =>
             {
                 myhero.UnitPosition = myPos;
-                myhero.transform.position = new Vector3(startPos.x + (PositionDelta * myPos) / GameManager.DeltaXScreen, transform.position.y, 0);
+                myhero.transform.position = new Vector3(startPos.x + (PositionDelta * myPos) / GameManager.DeltaYScreen, transform.position.y, 0);
                 myhero.unitlogic.ReloadStartPosition(myhero.transform.position);
                 BattleControll.heroLogic.GetRealPos();
             }, null);
@@ -95,7 +95,7 @@ namespace HeroLeft.BattleLogic {
             for (int i = -MaxPos; i < MarkParent.childCount / 2; i++)
             {
                 GameObject mark = MarkParent.GetChild(i + MaxPos).gameObject;
-                mark.transform.position = new Vector3(startPos.x + ((i < myPos) ? i : i + 1) * PositionDelta / GameManager.DeltaXScreen, transform.position.y, 0);
+                mark.transform.position = new Vector3(startPos.x + ((i < myPos) ? i : i + 1) * PositionDelta / GameManager.DeltaYScreen, transform.position.y, 0);
                 mark.name = ((i < myPos) ? i : i + 1).ToString();
             }
             MarkParent.gameObject.SetActive(true);

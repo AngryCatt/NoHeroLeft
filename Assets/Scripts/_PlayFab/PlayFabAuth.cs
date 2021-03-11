@@ -22,7 +22,7 @@ namespace HeroLeft.Auth {
 
         public ErrorText errorText;
 
-        bool registered = false;
+        public static bool registered = false;
 
         public static string EncryptPass(string pass) {
             MD5CryptoServiceProvider provider = new MD5CryptoServiceProvider();
@@ -79,21 +79,25 @@ namespace HeroLeft.Auth {
             };
 
             PlayFabClientAPI.LoginWithEmailAddress(loginRequest, LoginSuccess, LoginFailure);
-            transform.GetChild(2).gameObject.SetActive(false);
+
+            if(registered)
+            transform.GetChild(2).gameObject.SetActive(true);
+            else
+                transform.GetChild(1).gameObject.SetActive(false);
         }
 
         private void LoginSuccess(LoginResult result) {
             Debug.Log("Login success!");
             AuthController.FileReWrite(lgEmailField.text, lgPassField.text, (System.DateTime)result.LastLoginTime, result.PlayFabId);
+
+            if(!registered)
             gameObject.SetActive(false);
-            if(registered)
-                MenuController.menuController.StartTraining();
         }
 
         private void LoginFailure(PlayFabError error) {
             Debug.Log("Login failed! " + error);
             errorText.SendError("Неверный логин или пароль!");
-            transform.GetChild(2).gameObject.SetActive(true);
+            transform.GetChild(1).gameObject.SetActive(true);
         }
 
         public void RestorePassword() {

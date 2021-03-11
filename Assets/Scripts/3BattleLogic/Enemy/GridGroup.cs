@@ -48,7 +48,7 @@ namespace HeroLeft.BattleLogic {
         public Vector3 GetPosition(int x, int y)
         {
             Vector3 pos = transform.position;
-            float xDelta = (x - ((float)units.GetLength(0) / 2 - .5f)) / GameManager.DeltaXScreen;
+            float xDelta = (x - ((float)units.GetLength(0) / 2 - .5f)) / GameManager.DeltaYScreen;
             pos.x += xDelta * Spacing.x + xDelta * CellSize.x;
             pos.y -= (y * Spacing.y + y * CellSize.y) / GameManager.DeltaYScreen;
             return pos;
