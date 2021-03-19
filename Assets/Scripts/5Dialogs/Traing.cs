@@ -9,16 +9,12 @@ namespace HeroLeft.Misc
     {
         public int step = 0;
         public trainingStep[] steps;
+        public UnitObject Raimond;
         public Spell RaimondHeal;
+        public GameObject BlackScreen;
         public GameObject FireBall;
         public GameObject cursor;
         public Vector3[] positions;
-
-
-        public void set_CursorPosition(int pos)
-        {
-
-        }
 
         void Start()
         {
@@ -64,50 +60,57 @@ namespace HeroLeft.Misc
                 if(step == 2 || step == 3)
             fball = Instantiate(FireBall, BattleControll.battleControll.enemyUnitsParent.transform.GetChild(0).GetComponent<UnitLogic>().ChildImage);
 
-            if (step == 2)
-            {
-                BattleLogic.BattleLogic.battleLogic.DisposeAct();
-                step++;
-                StartCoroutine(dialogActive());
-            }
-            else if (step == 3)
-            {
-                BattleControll.heroLogic.Energy = 1;
-                HeroDrag drag = BattleControll.heroLogic.unitImage.gameObject.GetComponent<HeroDrag>();
-                cursor.transform.parent.localPosition = positions[0];
-                cursor.SetActive(true);
-                cursor.GetComponent<Animator>().Play("TrainingCursor");
-                GetComponent<Dialog.Dialog>().dialogStep = 9;
-                if (drag.MarkParent.childCount == 0)
-                    drag.Init(1);
-                drag.enabled = true;
 
-                if (BattleControll.heroLogic.unitlogic.Hp != BattleControll.heroLogic.unitlogic.unitObject.unitProperty.Hp)
-                {
-                    RaimondHeal.Execute(null, BattleControll.heroLogic.unitlogic.myUnit, false, -1);
-                }
-
-                BattleLogic.BattleLogic.battleLogic.addNextQueue(() =>
-                {
-                    if (step != 3) return;
-                    fball.GetComponent<Animator>().Play("effect_fireball_train");
-                    if (BattleControll.heroLogic.UnitPosition == 0)
-                    {
-                        StartCoroutine(attack());
-                        StartCoroutine(dialogActive());
-                    }
-                    else
-                    {
-                        cursor.SetActive(false);
-                        step++;
-                        GetComponent<Dialog.Dialog>().dialogStep = 10;
-                        StartCoroutine(dialogActive());
-                    }
-                }, null, -1);
-            }else if(step == 4)
+            switch (step)
             {
-                Interactive._StunInteractive.Stun((Unit)BattleControll.heroLogic, 3f, true);
-                StartCoroutine(dialogActive(.2f));
+                case 2:
+                    BattleLogic.BattleLogic.battleLogic.DisposeAct();
+                    step++;
+                    StartCoroutine(dialogActive());
+                    break;
+                case 3:
+                    BattleControll.heroLogic.Energy = 1;
+                    HeroDrag drag = BattleControll.heroLogic.unitImage.gameObject.GetComponent<HeroDrag>();
+                    cursor.transform.parent.localPosition = positions[0];
+                    cursor.SetActive(true);
+                    cursor.GetComponent<Animator>().Play("TrainingCursor");
+                    GetComponent<Dialog.Dialog>().dialogStep = 9;
+                    if (drag.MarkParent.childCount == 0)
+                        drag.Init(1);
+                    drag.enabled = true;
+
+                    if (BattleControll.heroLogic.unitlogic.Hp != BattleControll.heroLogic.unitlogic.unitObject.unitProperty.Hp)
+                    {
+                        RaimondHeal.Execute(null, BattleControll.heroLogic.unitlogic.myUnit, false, -1);
+                    }
+
+                    BattleLogic.BattleLogic.battleLogic.addNextQueue(() =>
+                    {
+                        if (step != 3) return;
+                        fball.GetComponent<Animator>().Play("effect_fireball_train");
+                        if (BattleControll.heroLogic.UnitPosition == 0)
+                        {
+                            StartCoroutine(attack());
+                            StartCoroutine(dialogActive());
+                        }
+                        else
+                        {
+                            cursor.SetActive(false);
+                            step++;
+                            GetComponent<Dialog.Dialog>().dialogStep = 10;
+                            StartCoroutine(dialogActive());
+                        }
+                    }, null, -1);
+                    break;
+                case 4:
+                    Interactive._StunInteractive.Stun((Unit)BattleControll.heroLogic, 3f, true);
+                    StartCoroutine(dialogActive(.2f));
+                    step++;
+                    break;
+                case 5:
+                    BlackScreen.SetActive(true);
+                    break;
+
             }
         }
 
@@ -121,6 +124,10 @@ namespace HeroLeft.Misc
         {
             yield return new WaitForSeconds(0.5f);
             BattleControll.heroLogic.unitlogic.TakeImpact(new Impact() { value = 20, isProcent = false }, BattleControll.battleControll.enemyUnitsParent.transform.GetChild(0).GetComponent<UnitLogic>().unitlogic);
+        }
+        public IEnumerator NextAct()
+        {
+            yield return new WaitForSeconds(1f);
         }
 
         public void ClearQueue()

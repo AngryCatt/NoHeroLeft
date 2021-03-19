@@ -59,7 +59,7 @@ namespace HeroLeft.Dialog
 
                     if (availPhrase.type == 0)
                         panels[activedPn].SetActive(false);
-                    if (activedPn != availPhrase.panelActive)
+                    if (activedPn != availPhrase.panelActive && availPhrase.panelActive != -2)
                     {
                         activedPn = availPhrase.panelActive;
                         panels[availPhrase.panelActive].SetActive(!panels[availPhrase.panelActive].activeSelf);
