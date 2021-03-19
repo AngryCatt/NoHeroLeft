@@ -7,7 +7,16 @@ namespace HeroLeft.Misc
         void Update()
         {
             if (BattleLogic.BattleControll.heroLogic.UnitPosition != 0)
-                Destroy(gameObject);
+            {
+                Deactive();
+                enabled = false;
+            }
+        }
+
+        public void Deactive()
+        {
+            transform.parent.localPosition = BattleLogic.BattleControll.battleControll.GetComponent<Traing>().positions[1];
+            GetComponent<Animator>().Play("clickAnim");
         }
     }
 }

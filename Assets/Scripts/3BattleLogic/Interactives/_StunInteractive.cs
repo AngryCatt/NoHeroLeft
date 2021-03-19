@@ -9,13 +9,12 @@ namespace HeroLeft.Interactive
     {
         const string ResourceLink = "Prefabs/Interactive/StunInteractive";
         private static GameObject obj;
-        private static float time = 3f;
         private static int actions = 3;
         private static int _act = 0;
         private static bool complited = false;
         private static bool ended = false;
 
-        public static void Stun(Unit target, Transform parent)
+        public static void Stun(Unit target, float time = 3, bool training = false)
         {
             if (ended) return;
             Time.timeScale = 0;
@@ -24,26 +23,35 @@ namespace HeroLeft.Interactive
             {
                 _act = 0;
                 complited = false;
-                obj = MonoBehaviour.Instantiate(Resources.Load<GameObject>(ResourceLink), parent);
+                obj = MonoBehaviour.Instantiate(Resources.Load<GameObject>(ResourceLink), BattleControll.battleControll.interactiveParent);
                 obj.GetComponentInChildren<Button>().onClick.AddListener(()=> DoAction());
             }
-            BattleControll.battleControll.StartCoroutine(timer());
+
+            BattleControll.battleControll.StartCoroutine(timer(time, training));
         }
 
-        public static IEnumerator timer()
+        public static IEnumerator timer(float time, bool training)
         {
             yield return new WaitForSecondsRealtime(time);
             if (obj != null)
             {
-                MonoBehaviour.Destroy(obj);
                 if (!complited)
                 {
-                    BattleLogic.BattleLogic.battleLogic.addMyNextQueue(() => { TurnController.turnController.SkipTurn(); ended = false; }, null, 0);
+                    if (!training)
+                    {
+                        BattleLogic.BattleLogic.battleLogic.addMyNextQueue(() => { TurnController.turnController.SkipTurn(); ended = false; }, null, 0);
+                        MonoBehaviour.Destroy(obj);
+                    }
+                    else
+                    {
+                        BattleControll.battleControll.StartCoroutine(timer(time, training));
+                        yield break;
+                    }
                 }
-            }
-            else
-            {
-                ended = false;
+                else
+                {
+                    MonoBehaviour.Destroy(obj);
+                }
             }
             Time.timeScale = 1;
         }

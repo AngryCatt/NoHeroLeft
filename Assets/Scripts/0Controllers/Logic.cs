@@ -11,6 +11,7 @@ namespace HeroLeft.BattleLogic
     {
 
         public UnitProperty unitProperty;
+        public UnitProperty ProcentProperty;
         public Slider hpSlider;
 
         public List<Effect> unitEffects = new List<Effect>();
@@ -605,7 +606,7 @@ namespace HeroLeft.BattleLogic
                 for (int i = 0; i < unitObject.Items.Length; i++)
                 {
                     if (unitObject.Items[i] != null)
-                        unitObject.unitProperty += unitObject.Items[i].ItemProperty;
+                        unitObject.unitProperty += unitObject.Items[i].sum_property;
 
                     int quate = i;
                     if(unitObject.Items[i].ItemAction.OnAttack != null && unitObject.Items[i].ItemAction.OnAttack.GetPersistentEventCount() > 0)

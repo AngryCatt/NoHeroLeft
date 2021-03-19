@@ -25,6 +25,8 @@ namespace HeroLeft
         public const string MissIndicator = "Prefabs/MissIndicator";
         public const string HealIndicator = "Prefabs/HealIndicator";
 
+        public const string ClassItemsFolder = "Items/1classitems/";
+
         public const float AttackReactionDistance = 200f;
 
         public static string UserName;

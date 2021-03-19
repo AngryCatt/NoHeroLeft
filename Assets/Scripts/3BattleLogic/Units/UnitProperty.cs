@@ -4,11 +4,16 @@ using System;
 namespace HeroLeft.BattleLogic {
     [Serializable]
     public class UnitProperty : ICloneable {
+        [UnityEngine.Space()]
         public SafeFloat Hp;
         public SafeFloat Energy;
         public SafeFloat Mana;
 
+        [UnityEngine.Space()]
         public SafeFloat HpRegen;
+        public SafeFloat ManaRegen;
+        public SafeFloat EnergyRegen;
+
         public SafeFloat Damage;
         public DamageType damageType;
 
@@ -41,20 +46,40 @@ namespace HeroLeft.BattleLogic {
         public SafeFloat DirectSpellDamage;
         public SafeFloat FieldSpellDamage;
 
-        public object Clone() {
-            return new UnitProperty { Hp = Hp, Damage = Damage, 
-            Evasion = Evasion, HpRegen = HpRegen, Energy = Energy,
-            Armor = Armor, DamageResist = DamageResist, Mana = Mana,
-            AttackCritChanse = AttackCritChanse, BlockChanse = BlockChanse,
-            BlockDamage = BlockDamage, BloodResist = BloodResist,
-            CriticalDamage = CriticalDamage, DarkResist = DarkResist,
-            DirectSpellDamage = DirectSpellDamage, FireResist = FireResist,
-            FieldSpellDamage = FieldSpellDamage, IceResist = IceResist,
-            LightResist = LightResist, MagicCritChanse = MagicCritChanse,
-            NatureResist = NatureResist, ParryChanse = ParryChanse,
-            PoisonResist = PoisonResist, PureResist = PureResist,
-            damageType = damageType,
-            MagicResist = MagicResist, AbsoluteBlockChanse = AbsoluteBlockChanse };
+        public object Clone()
+        {
+            return new UnitProperty
+            {
+                Hp = Hp,
+                Damage = Damage,
+                EnergyRegen = EnergyRegen,
+                ManaRegen = ManaRegen,
+                Evasion = Evasion,
+                HpRegen = HpRegen,
+                Energy = Energy,
+                Armor = Armor,
+                DamageResist = DamageResist,
+                Mana = Mana,
+                AttackCritChanse = AttackCritChanse,
+                BlockChanse = BlockChanse,
+                BlockDamage = BlockDamage,
+                BloodResist = BloodResist,
+                CriticalDamage = CriticalDamage,
+                DarkResist = DarkResist,
+                DirectSpellDamage = DirectSpellDamage,
+                FireResist = FireResist,
+                FieldSpellDamage = FieldSpellDamage,
+                IceResist = IceResist,
+                LightResist = LightResist,
+                MagicCritChanse = MagicCritChanse,
+                NatureResist = NatureResist,
+                ParryChanse = ParryChanse,
+                PoisonResist = PoisonResist,
+                PureResist = PureResist,
+                damageType = damageType,
+                MagicResist = MagicResist,
+                AbsoluteBlockChanse = AbsoluteBlockChanse
+            };
         }
 
         public static UnitProperty operator +(UnitProperty a, UnitProperty b) => new UnitProperty()
@@ -86,6 +111,8 @@ namespace HeroLeft.BattleLogic {
             Energy = a.Energy + b.Energy,
             Mana = a.Mana + b.Mana,
             damageType = a.damageType,
+            ManaRegen = a.ManaRegen + b.ManaRegen,
+            EnergyRegen = a.EnergyRegen + b.EnergyRegen,
         };
 
         public static UnitProperty operator -(UnitProperty a, UnitProperty b) => new UnitProperty()
@@ -117,11 +144,12 @@ namespace HeroLeft.BattleLogic {
             Energy = a.Energy - b.Energy,
             Mana = a.Mana - b.Mana,
             damageType = a.damageType,
+            ManaRegen = a.ManaRegen - b.ManaRegen,
+            EnergyRegen = a.EnergyRegen - b.EnergyRegen,
         };
     }
 
-    public enum DamageType : int
-    {
+    public enum DamageType : int {
         Phys = 0,
         Magic = 1,
         Pure = 2,

@@ -29,6 +29,10 @@ MonoBehaviour:
       value: 100
     HpRegen:
       value: 0
+    ManaRegen:
+      value: 0
+    EnergyRegen:
+      value: 0
     Damage:
       value: 5
     damageType: 0
@@ -78,6 +82,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ad6dcfac7820d1a41b6295900fdc9f0c, type: 2}
   - {fileID: 11400000, guid: fe5f2f3cbed9aad429b86fdc725ff9d7, type: 2}
   - {fileID: 11400000, guid: fc7ac2d0207bead43a60f847536c2a7c, type: 2}
+  - {fileID: 11400000, guid: 0b5f337f9b6f28849a5dbae0f8979eff, type: 2}
   Items: []
   ActionsPerTurn: 1
   FirstLinePriority: 0

@@ -150,6 +150,7 @@ namespace HeroLeft.BattleLogic {
 
         public void DisposeAct()
         {
+            if(selectedAction != null)
             selectedAction.OnDeselect();
             if (selectedTarget != null)
                 selectedTarget.OnDeselect();

@@ -19,6 +19,7 @@ MonoBehaviour:
     isProcent: 0
   uImage:
     img: {fileID: 0}
+    Container: {fileID: 0}
     pos: {x: 0, y: 0}
     size: {x: 0, y: 0}
   passiveSettings:
@@ -30,7 +31,7 @@ MonoBehaviour:
   ReloadTurns: 0
   InstantAction: 0
   Perk: 0
-  spellClass: 1
+  spellClass: 0
   spellTarget: 0
   spellType: UnitAction
   effects: []

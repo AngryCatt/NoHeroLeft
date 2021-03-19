@@ -45,9 +45,9 @@ namespace HeroLeft.BattleLogic {
         private void NextTurnRepose()
         {
             if (this == null || SceneManager.GetActiveScene().buildIndex != 2) return;
-            Energy = Mathf.Clamp(Energy + 50, 0, EnergySlider.maxValue);
-            Mana = Mathf.Clamp(Mana + 50, 0, ManaSlider.maxValue);
-            logic.Hp = Mathf.Clamp(logic.Hp + 5, 0, HpSlider.maxValue);
+            Energy = Mathf.Clamp(Energy + unitlogic.unitProperty.EnergyRegen, 0, EnergySlider.maxValue);
+            Mana = Mathf.Clamp(Mana + unitlogic.unitProperty.ManaRegen, 0, ManaSlider.maxValue);
+            logic.Hp = Mathf.Clamp(logic.Hp + unitlogic.unitProperty.HpRegen, 0, HpSlider.maxValue);
             ReloadAllSpells();
             EffectsTick();
             BattleLogic.battleLogic.addMyNextQueue(NextTurnRepose, null);

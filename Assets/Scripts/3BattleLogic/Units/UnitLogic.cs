@@ -79,6 +79,7 @@ namespace HeroLeft.BattleLogic
 
             if (logic.UnitAction <= 0)
                 logic.UnitAction += (logic.UnitAction < unitObject.ActionsPerTurn) ? unitObject.ActionsPerTurn : 0;
+
             EffectsTick(start);
             if (this == null) return;
             SpellsReload();

@@ -306,6 +306,7 @@ namespace HeroLeft.BattleLogic {
         {
             string[] cmd = arg.Split(';');
             Logic targ = Helper.getTarget(int.Parse(cmd[0]));
+            if(targ != null)
             Execute(null, targ.myUnit, true, cmd.Length > 1 ? int.Parse(cmd[1]) : 0 );
         }
 
@@ -317,7 +318,7 @@ namespace HeroLeft.BattleLogic {
                 if (active == "stun")
                 {
 
-                    HeroLeft.Interactive._StunInteractive.Stun(Helper.lstDamagedEnemy.myUnit, BattleControll.battleControll.interactiveParent);
+                    HeroLeft.Interactive._StunInteractive.Stun(Helper.lstDamagedEnemy.myUnit);
                 }
             }
             catch

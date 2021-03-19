@@ -16,6 +16,7 @@ MonoBehaviour:
   IsHero: 0
   Avatar:
     img: {fileID: 21300000, guid: 7075b5143b13e2c4391bdb0d5d0ced73, type: 3}
+    Container: {fileID: 0}
     pos: {x: 0, y: 0}
     size: {x: 120, y: 175}
   MirrorImage: 0
@@ -27,6 +28,10 @@ MonoBehaviour:
     Mana:
       value: 0
     HpRegen:
+      value: 0
+    ManaRegen:
+      value: 0
+    EnergyRegen:
       value: 0
     Damage:
       value: 5
@@ -75,12 +80,13 @@ MonoBehaviour:
       value: 0
   Spells: []
   Items: []
-  ActionsPerTurn: 1
+  ActionsPerTurn: 2
   FirstLinePriority: 0
   IsRangeUnit: 0
   attackType: {fileID: 0}
   ico:
     img: {fileID: 21300000, guid: 29822cdb2912513469e41626584f912d, type: 3}
+    Container: {fileID: 0}
     pos: {x: 0, y: 0}
     size: {x: 0, y: 0}
   unitActions:

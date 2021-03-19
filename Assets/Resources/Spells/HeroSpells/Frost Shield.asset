@@ -19,6 +19,7 @@ MonoBehaviour:
     isProcent: 0
   uImage:
     img: {fileID: 21300000, guid: fa61f76608a9f884497c1388db5e964f, type: 3}
+    Container: {fileID: 0}
     pos: {x: 0, y: 0}
     size: {x: 0, y: 0}
   passiveSettings:
@@ -36,6 +37,7 @@ MonoBehaviour:
   effects:
   - Name: Frost Shield Effect
     Function: 
+    refreshFunction: 0
     VisualEffect: {fileID: 0}
     Duration: 3
     ImpactValue:
@@ -70,7 +72,7 @@ MonoBehaviour:
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: LastOffender
+            m_StringArgument: 5
             m_BoolArgument: 0
           m_CallState: 2
     OnAttack:
